@@ -5,11 +5,18 @@
   publish = "."
   command = ""
 
-# SPA-style: unknown paths fall back to index (optional; remove if you use static HTML only)
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
+# Proxy /V3ExpansionsReboot to the V3 site
+[[redirects]]
+  from = "/V3ExpansionsReboot"
+  to = "https://2advancedv3reboot.netlify.app/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/V3ExpansionsReboot/*"
+  to = "https://2advancedv3reboot.netlify.app/:splat"
+  status = 200
+  force = true
 
 # Optional: cache static assets
 [[headers]]
