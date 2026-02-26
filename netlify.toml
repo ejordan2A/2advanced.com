@@ -1,0 +1,23 @@
+# 2Advanced.com – Netlify config
+# Point your domain DNS to Netlify and deploy this repo.
+
+[build]
+  publish = "."
+  command = ""
+
+# SPA-style: unknown paths fall back to index (optional; remove if you use static HTML only)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+
+# Optional: cache static assets
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
