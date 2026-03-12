@@ -264,6 +264,15 @@
       color: rgba(0, 200, 235, 0.6);
     }
 
+    @media (max-width: 480px) {
+      .top-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem 1rem;
+        text-align: center;
+      }
+    }
+
     main {
       position: relative;
       z-index: 1;
@@ -406,6 +415,34 @@
       flex-direction: column;
       align-items: center;
       gap: 0.65rem;
+    }
+
+    .case-study-link {
+      margin-top: 3.5rem;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.38);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .case-study-link::before {
+      content: '→';
+      margin-right: 0.55rem;
+      color: rgba(0, 200, 235, 0.55);
+      transition: transform 0.3s ease, color 0.3s ease;
+      display: inline-block;
+    }
+
+    .case-study-link:hover {
+      color: rgba(0, 200, 235, 0.65);
+    }
+
+    .case-study-link:hover::before {
+      transform: translateX(3px);
+      color: rgba(0, 218, 255, 0.9);
     }
 
     .cta {
@@ -629,6 +666,7 @@
         <span class="arrow" aria-hidden="true"></span>
       </a>
     </div>
+    <a href="https://www.ericjordan.com/portfolios/2advanced-v3-rive/" target="_blank" rel="noopener noreferrer" class="case-study-link">V3 Expansions Rive Rebuild — Case Study</a>
   </main>
 
   <footer>
