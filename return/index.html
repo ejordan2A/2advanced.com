@@ -256,6 +256,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 3.5rem;
       margin-bottom: 2.75rem;
       animation: fadeUp 1s ease both;
       animation-delay: 0.3s;
@@ -630,6 +631,30 @@
 
     /* ─── FOOTER ─── */
 
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.4rem;
+      margin-top: 0.75rem;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .top-nav a {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.2);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .top-nav a:hover {
+      color: rgba(0, 200, 235, 0.6);
+    }
+
     footer {
       position: relative;
       z-index: 2;
@@ -745,9 +770,147 @@
       pointer-events: none;
     }
 
+    /* ─── PRESS SECTION ─── */
+
+    .press-section {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .press-eyebrow {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(0, 200, 235, 0.55);
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .press-eyebrow::before,
+    .press-eyebrow::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 60px;
+      height: 1px;
+      background: rgba(0, 200, 235, 0.2);
+    }
+    .press-eyebrow::before { right: calc(50% + 46px); }
+    .press-eyebrow::after  { left:  calc(50% + 46px); }
+
+    .press-feature {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.35s ease;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .press-feature::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(0,190,230,0.06) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .press-feature:hover { border-color: rgba(0, 200, 235, 0.28); }
+    .press-feature:hover::before { opacity: 1; }
+
+    .press-feature-accent {
+      flex-shrink: 0;
+      width: 3px;
+      background: linear-gradient(180deg, rgba(0,200,235,0.7) 0%, rgba(0,140,200,0.2) 100%);
+    }
+
+    .press-feature-body {
+      flex: 1;
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .press-feature-outlet {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(0, 200, 235, 0.65);
+    }
+
+    .press-feature-headline {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.45;
+      transition: color 0.3s ease;
+    }
+
+    .press-feature:hover .press-feature-headline {
+      color: #fff;
+    }
+
+    .press-feature-desc {
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.38);
+      line-height: 1.6;
+      margin-top: 2px;
+    }
+
+    .press-feature-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(0, 200, 235, 0.5);
+      transition: color 0.3s ease, gap 0.3s ease;
+    }
+
+    .press-feature:hover .press-feature-cta {
+      color: rgba(0, 218, 255, 0.9);
+      gap: 0.65rem;
+    }
+
+    .press-feature-cta svg {
+      width: 14px; height: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .press-feature:hover .press-feature-cta svg {
+      transform: translateX(3px);
+    }
+
     /* ─── RESPONSIVE ─── */
 
     @media (max-width: 640px) {
+      .press-section { padding: 60px 24px; }
+      .press-feature-body { padding: 24px 22px; }
+      .press-feature-headline { font-size: 15px; }
+      .press-eyebrow::before, .press-eyebrow::after { display: none; }
+
       .nav-links { grid-template-columns: 1fr 1fr; }
 
       .nav-link { border-right: none; }
@@ -779,6 +942,12 @@
   <div class="fade-to-black" aria-hidden="true"></div>
 
   <p class="meta">2Advanced Studios &middot; Est. 1999 &middot; Pioneering Immersive Digital</p>
+  <nav class="top-nav" aria-label="Site navigation">
+    <a href="https://2advanced.com">Main</a>
+    <a href="https://v3.2advanced.com">V3 Expansions</a>
+    <a href="https://shop.2advanced.com" target="_blank" rel="noopener noreferrer">Shop</a>
+    <a href="https://www.patreon.com/2Advanced" target="_blank" rel="noopener noreferrer">Patreon</a>
+  </nav>
 
   <header>
     <div class="logo-wrap">
@@ -838,6 +1007,22 @@
         allowfullscreen
       ></iframe>
     </div>
+  </section>
+
+  <section class="press-section" aria-label="Press">
+    <p class="press-eyebrow">Press</p>
+    <a href="https://www.schoolofmotion.com/blog/2advanced" target="_blank" rel="noopener noreferrer" class="press-feature">
+      <span class="press-feature-accent"></span>
+      <div class="press-feature-body">
+        <span class="press-feature-outlet">School of Motion</span>
+        <span class="press-feature-headline">Rediscovering the Art of Interactive Design with 2Advanced Studios</span>
+        <span class="press-feature-desc">"From Flash to the future — School of Motion sits down with Eric Jordan and Tony Novak to explore the studio's legendary work, the lessons learned from the decline of Flash, and what the next era of interactive design looks like."</span>
+        <span class="press-feature-cta">
+          Read the feature
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M8 3.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+    </a>
   </section>
 
   <nav class="nav-section" aria-label="Explore 2Advanced">
