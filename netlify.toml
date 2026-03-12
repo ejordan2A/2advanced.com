@@ -5,6 +5,19 @@
   publish = "."
   command = ""
 
+# Serve /return/ folder when accessed via return.2advanced.com subdomain
+[[redirects]]
+  from = "https://return.2advanced.com/*"
+  to = "/return/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://return.2advanced.com"
+  to = "/return/index.html"
+  status = 200
+  force = true
+
 # Proxy /V3ExpansionsReboot to the V3 site
 [[redirects]]
   from = "/V3ExpansionsReboot"
