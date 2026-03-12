@@ -1,0 +1,13 @@
+# return.2advanced.com — Netlify config
+# Deploy this /return folder as its own Netlify site.
+# Then add return.2advanced.com as a custom domain in the Netlify dashboard
+# and add a CNAME DNS record pointing return → <your-netlify-app>.netlify.app
+
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
