@@ -445,6 +445,91 @@
       color: rgba(0, 218, 255, 0.9);
     }
 
+    .mini-signup {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .mini-signup-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .mini-signup-form {
+      display: flex;
+      width: 100%;
+      gap: 0;
+    }
+
+    .mini-signup-input {
+      flex: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-right: none;
+      color: rgba(255,255,255,0.8);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      padding: 0.6rem 0.9rem;
+      outline: none;
+      font-family: inherit;
+      border-radius: 0;
+      -webkit-appearance: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .mini-signup-input::placeholder {
+      color: rgba(255,255,255,0.18);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .mini-signup-input:focus {
+      border-color: rgba(0,200,235,0.35);
+    }
+
+    .mini-signup-btn {
+      flex-shrink: 0;
+      background: rgba(0,190,230,0.1);
+      border: 1px solid rgba(0,200,235,0.3);
+      color: rgba(0,218,255,0.8);
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 0;
+      -webkit-appearance: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .mini-signup-btn:hover {
+      background: rgba(0,200,235,0.18);
+      color: #fff;
+    }
+
+    .mini-signup-msg {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: none;
+    }
+
+    .mini-signup-msg.success { color: rgba(0,218,255,0.7); display: block; }
+    .mini-signup-msg.error   { color: rgba(255,90,90,0.7); display: block; }
+
     .cta {
       display: flex;
       width: 100%;
@@ -667,6 +752,15 @@
       </a>
     </div>
     <a href="https://www.ericjordan.com/portfolios/2advanced-v3-rive/" target="_blank" rel="noopener noreferrer" class="case-study-link">V3 Expansions Rive Rebuild — Case Study</a>
+
+    <div class="mini-signup">
+      <span class="mini-signup-label">Stay in the signal</span>
+      <form class="mini-signup-form" id="miniSignupForm">
+        <input class="mini-signup-input" type="email" name="email" placeholder="Your email" required autocomplete="email" />
+        <button class="mini-signup-btn" type="submit">Subscribe</button>
+      </form>
+      <p class="mini-signup-msg" id="miniSignupMsg"></p>
+    </div>
   </main>
 
   <footer>
@@ -692,6 +786,39 @@
   </footer>
 
   <script>
+    document.getElementById('miniSignupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value.trim();
+      const msg   = document.getElementById('miniSignupMsg');
+      const btn   = this.querySelector('.mini-signup-btn');
+
+      btn.textContent = '...';
+      btn.disabled = true;
+      msg.className = 'mini-signup-msg';
+      msg.textContent = '';
+
+      try {
+        const res = await fetch('/.netlify/functions/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (res.ok) {
+          msg.textContent = 'Signal received.';
+          msg.className = 'mini-signup-msg success';
+          this.querySelector('input').value = '';
+        } else {
+          throw new Error();
+        }
+      } catch {
+        msg.textContent = 'Failed. Please try again.';
+        msg.className = 'mini-signup-msg error';
+      } finally {
+        btn.textContent = 'Subscribe';
+        btn.disabled = false;
+      }
+    });
+
     (function scheduleLogoGlitch() {
       const wrap = document.querySelector('.logo-wrap');
       const delay = 4000 + Math.random() * 10000;
