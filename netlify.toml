@@ -4,6 +4,7 @@
 [build]
   publish = "."
   command = ""
+  functions = "netlify/functions"
 
 # Serve /return/ folder when accessed via return.2advanced.com subdomain
 [[redirects]]
