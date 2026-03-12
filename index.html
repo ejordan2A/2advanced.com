@@ -168,7 +168,72 @@
     }
 
     .logo-wrap {
+      position: relative;
       margin-bottom: 1.25rem;
+    }
+
+    /* Pulsing neon glow behind the circular logo */
+    .logo-wrap::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(160px, 32vw, 220px);
+      height: clamp(160px, 32vw, 220px);
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center,
+        rgba(0, 220, 255, 0.45)  0%,
+        rgba(0, 185, 240, 0.28) 30%,
+        rgba(0, 140, 220, 0.14) 55%,
+        rgba(10, 0, 140, 0.06)  75%,
+        transparent 90%);
+      filter: blur(22px);
+      animation: logo-glow 5s ease-in-out infinite alternate;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes logo-glow {
+      0%   { opacity: 0.75; transform: translate(-50%, -50%) scale(1);    filter: blur(22px); }
+      33%  { opacity: 1;    transform: translate(-50%, -50%) scale(1.12); filter: blur(26px); }
+      66%  { opacity: 0.85; transform: translate(-50%, -50%) scale(0.95); filter: blur(20px); }
+      100% { opacity: 0.95; transform: translate(-50%, -50%) scale(1.07); filter: blur(24px); }
+    }
+
+    /* Soft conic rainbow overlay — spins on top via mix-blend-mode on glitch */
+    .logo-wrap::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg) scale(0.85);
+      width: clamp(160px, 32vw, 220px);
+      height: clamp(160px, 32vw, 220px);
+      border-radius: 50%;
+      background: conic-gradient(
+        rgba(255, 60, 120, 0.55)  0deg,
+        rgba(255, 190, 0,  0.45)  60deg,
+        rgba(0,   255, 160, 0.5)  120deg,
+        rgba(0,   160, 255, 0.55) 180deg,
+        rgba(180, 0,   255, 0.45) 240deg,
+        rgba(255, 60,  120, 0.55) 360deg
+      );
+      mix-blend-mode: screen;
+      filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .logo-wrap.is-glitching::after {
+      animation: logo-rainbow-overlay 0.7s ease-in-out forwards;
+    }
+
+    @keyframes logo-rainbow-overlay {
+      0%   { opacity: 0;    transform: translate(-50%, -50%) rotate(0deg)   scale(0.85); filter: blur(14px); }
+      22%  { opacity: 0.18; transform: translate(-50%, -50%) rotate(45deg)  scale(1);    filter: blur(12px); }
+      50%  { opacity: 0.12; transform: translate(-50%, -50%) rotate(-25deg) scale(1.06); filter: blur(16px); }
+      75%  { opacity: 0.15; transform: translate(-50%, -50%) rotate(65deg)  scale(0.97); filter: blur(13px); }
+      100% { opacity: 0;    transform: translate(-50%, -50%) rotate(80deg)  scale(0.88); filter: blur(14px); }
     }
 
     .logo-wrap img {
@@ -176,6 +241,21 @@
       width: clamp(160px, 32vw, 220px);
       height: auto;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hue-shift on the image itself when glitching */
+    .logo-wrap.is-glitching img {
+      animation: logo-hue-shift 0.7s ease-in-out forwards;
+    }
+
+    @keyframes logo-hue-shift {
+      0%, 100% { filter: none; }
+      20%  { filter: hue-rotate(22deg)  saturate(1.3) brightness(1.04); }
+      45%  { filter: hue-rotate(-15deg) saturate(1.4) brightness(1.03); }
+      68%  { filter: hue-rotate(38deg)  saturate(1.25) brightness(1.04); }
+      88%  { filter: hue-rotate(0deg)   saturate(1)   brightness(1);    }
     }
 
     .tagline {
@@ -445,5 +525,19 @@
     </nav>
     <p class="footer-copy">© 2026 2Advanced Studios. All rights reserved.</p>
   </footer>
+
+  <script>
+    (function scheduleLogoGlitch() {
+      const wrap = document.querySelector('.logo-wrap');
+      const delay = 4000 + Math.random() * 10000;
+      setTimeout(() => {
+        wrap.classList.add('is-glitching');
+        setTimeout(() => {
+          wrap.classList.remove('is-glitching');
+          scheduleLogoGlitch();
+        }, 750);
+      }, delay);
+    })();
+  </script>
 </body>
 </html>
