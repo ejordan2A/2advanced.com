@@ -772,6 +772,151 @@
       pointer-events: none;
     }
 
+    /* ─── SIGNAL SIGNUP ─── */
+
+    .signal-signup {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .signal-signup-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(0, 200, 235, 0.55);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .signal-signup-eyebrow::before,
+    .signal-signup-eyebrow::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 50px;
+      height: 1px;
+      background: rgba(0, 200, 235, 0.2);
+    }
+    .signal-signup-eyebrow::before { right: calc(50% + 58px); }
+    .signal-signup-eyebrow::after  { left:  calc(50% + 58px); }
+
+    .signal-signup-heading {
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 200;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .signal-signup-sub {
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: rgba(255, 255, 255, 0.35);
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+
+    .signal-form {
+      display: flex;
+      gap: 0;
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+    }
+
+    .signal-form-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-right: none;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      padding: 0.9rem 1.2rem;
+      outline: none;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      font-family: inherit;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .signal-form-input::placeholder {
+      color: rgba(255, 255, 255, 0.22);
+      letter-spacing: 0.08em;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .signal-form-input:focus {
+      border-color: rgba(0, 200, 235, 0.4);
+      background: rgba(0, 190, 230, 0.04);
+    }
+
+    .signal-form-btn {
+      flex-shrink: 0;
+      background: rgba(0, 190, 230, 0.12);
+      border: 1px solid rgba(0, 200, 235, 0.35);
+      color: rgba(0, 218, 255, 0.9);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.4rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+
+    .signal-form-btn:hover {
+      background: rgba(0, 200, 235, 0.2);
+      border-color: rgba(0, 218, 255, 0.65);
+      color: #fff;
+    }
+
+    .signal-form-message {
+      margin-top: 16px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      display: none;
+    }
+
+    .signal-form-message.success { color: rgba(0, 218, 255, 0.75); display: block; }
+    .signal-form-message.error   { color: rgba(255, 100, 100, 0.75); display: block; }
+
+    .signal-signup-note {
+      margin-top: 18px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.15);
+    }
+
+    @media (max-width: 480px) {
+      .signal-signup { padding: 60px 24px; }
+      .signal-form { flex-direction: column; }
+      .signal-form-input { border-right: 1px solid rgba(255,255,255,0.12); border-bottom: none; }
+      .signal-form-btn { padding: 0.85rem; }
+      .signal-signup-eyebrow::before, .signal-signup-eyebrow::after { display: none; }
+    }
+
     /* ─── PRESS SECTION ─── */
 
     .press-section {
@@ -1011,6 +1156,28 @@
     </div>
   </section>
 
+  <section class="signal-signup" aria-label="Newsletter signup">
+    <p class="signal-signup-eyebrow">Stay Connected</p>
+    <h2 class="signal-signup-heading">Receive the Transmissions</h2>
+    <p class="signal-signup-sub">Updates on new work, behind-the-scenes, and dispatches from the studio. No noise — only signal.</p>
+
+    <!-- Replace YOUR_PUBLICATION_ID with your Beehiiv publication ID after signup -->
+    <form class="signal-form" id="signalForm">
+      <input
+        class="signal-form-input"
+        type="email"
+        name="email"
+        id="signalEmail"
+        placeholder="Your email address"
+        required
+        autocomplete="email"
+      />
+      <button class="signal-form-btn" type="submit">Transmit</button>
+    </form>
+    <p class="signal-form-message" id="signalMessage"></p>
+    <p class="signal-signup-note">No spam. Unsubscribe anytime.</p>
+  </section>
+
   <section class="press-section" aria-label="Press">
     <p class="press-eyebrow">Press</p>
     <a href="https://www.schoolofmotion.com/blog/2advanced" target="_blank" rel="noopener noreferrer" class="press-feature">
@@ -1064,6 +1231,40 @@
         }, 750);
       }, delay);
     })();
+
+    // ── Beehiiv signup — proxied via Netlify Function ──
+    document.getElementById('signalForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('signalEmail').value.trim();
+      const msg   = document.getElementById('signalMessage');
+      const btn   = this.querySelector('.signal-form-btn');
+
+      btn.textContent = '...';
+      btn.disabled = true;
+      msg.className = 'signal-form-message';
+      msg.textContent = '';
+
+      try {
+        const res = await fetch('/.netlify/functions/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (res.ok) {
+          msg.textContent = 'Signal received. Welcome to the transmission.';
+          msg.className = 'signal-form-message success';
+          document.getElementById('signalEmail').value = '';
+        } else {
+          throw new Error();
+        }
+      } catch {
+        msg.textContent = 'Transmission failed. Please try again.';
+        msg.className = 'signal-form-message error';
+      } finally {
+        btn.textContent = 'Transmit';
+        btn.disabled = false;
+      }
+    });
 
     document.querySelectorAll('.video-poster').forEach(poster => {
       poster.addEventListener('click', () => {
