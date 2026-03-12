@@ -261,7 +261,7 @@
 
     .tours {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
       text-align: center;
     }
@@ -364,7 +364,13 @@
       letter-spacing: 0.02em;
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 680px) {
+      .tours {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 400px) {
       .tours {
         grid-template-columns: 1fr;
       }
@@ -379,6 +385,12 @@
       .tour {
         padding: 0;
       }
+    }
+
+    @media (max-width: 680px) {
+      .tour:not(:last-child) { border-right: none; border-bottom: none; }
+      .tour:nth-child(odd)   { border-right: 1px solid rgba(255,255,255,0.1); }
+      .tour:nth-child(-n+2)  { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.25rem; margin-bottom: 1rem; }
     }
   </style>
 </head>
@@ -425,6 +437,10 @@
       <a href="https://www.patreon.com/2Advanced" target="_blank" rel="noopener noreferrer" class="tour">
         <span class="tour-label">Patreon</span>
         <span class="tour-desc">Behind the scenes & early access</span>
+      </a>
+      <a href="https://return.2advanced.com" target="_blank" rel="noopener noreferrer" class="tour">
+        <span class="tour-label">Return</span>
+        <span class="tour-desc">Watch the return of 2Advanced</span>
       </a>
     </nav>
     <p class="footer-copy">© 2026 2Advanced Studios. All rights reserved.</p>
