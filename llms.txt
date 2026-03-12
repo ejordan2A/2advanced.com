@@ -1,0 +1,23 @@
+# 2Advanced Studios
+
+> 2Advanced Studios is a world-renowned digital studio pioneering immersive and experimental web experiences since 1999. Founded by Eric Jordan, 2Advanced became iconic in the web design industry for its Flash-era experiential websites that pushed the boundaries of digital artistry.
+
+## About
+2Advanced Studios (est. 1999) is known for creating visionary, technology-driven digital experiences. The studio gained international recognition for its series of version-based websites (V1–V5) that defined an era of immersive web design. After years of absence, 2Advanced has returned with new work, new transmissions, and continued innovation.
+
+## Properties
+- Main site: https://2advanced.com — Studio hub and entry point
+- V3 Expansions Reboot: https://v3.2advanced.com — A re-imagined version of the iconic 2001 Flash-based V3 website, rebuilt entirely in Rive and React
+- Return Transmissions: https://return.2advanced.com — The official return announcement videos and transmissions from 2Advanced Studios
+- Shop: https://shop.2advanced.com — Official gear, apparel, and vector kits
+- Patreon: https://patreon.com/2Advanced — Behind-the-scenes content and early access
+
+## Key Facts
+- Founded: 1999
+- Founder: Eric Jordan
+- Known for: Immersive Flash-era web experiences, experimental digital art, V3 Expansions
+- Current focus: Rive-based interactive experiences, digital design education, community building
+- YouTube: https://www.youtube.com/@2advanced
+
+## Contact
+- General inquiries: info@2advanced.com
