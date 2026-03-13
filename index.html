@@ -264,17 +264,23 @@
       color: rgba(0, 200, 235, 0.6);
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 780px) {
+      .top-nav {
+        gap: 1.2rem;
+      }
+
+      .top-nav a {
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 560px) {
       .top-nav {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0.55rem 0.5rem;
         text-align: center;
         padding: 0.7rem 1.5rem;
-      }
-
-      .top-nav a {
-        white-space: nowrap;
       }
     }
 
