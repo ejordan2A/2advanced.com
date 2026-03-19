@@ -7,16 +7,40 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://2advanced.com/privacy/</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://2advanced.com/terms/</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://2advanced.com/llms.txt</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://return.2advanced.com/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://v3.2advanced.com/</loc>
+    <loc>https://v3.2advanced.com/v3expansionsreboot/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://v3.2advanced.com/v3expansionsreboot/llms.txt</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.35</priority>
   </url>
   <url>
     <loc>https://shop.2advanced.com/</loc>

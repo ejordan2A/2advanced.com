@@ -15,5 +15,8 @@ return.2advanced.com is the dedicated home for the return of 2Advanced Studios. 
 - Shop: https://shop.2advanced.com
 - Patreon: https://patreon.com/2Advanced
 
-## Parent Organization
-2Advanced Studios - https://2advanced.com
+## Parent organization
+2Advanced Studios: https://2advanced.com/
+
+## Canonical studio context (AI)
+Full entity summary for language models: https://2advanced.com/llms.txt

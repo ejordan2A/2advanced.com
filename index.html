@@ -735,6 +735,26 @@
       letter-spacing: 0.02em;
     }
 
+    .footer-legal {
+      margin-top: 0.65rem;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.18);
+    }
+
+    .footer-legal a {
+      color: rgba(255, 255, 255, 0.22);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .footer-legal a:hover {
+      color: rgba(0, 200, 235, 0.45);
+    }
+
     @media (max-width: 680px) {
       .tours {
         grid-template-columns: 1fr 1fr;
@@ -838,6 +858,7 @@
       </a>
     </nav>
     <p class="footer-copy">© 2026 2Advanced Studios. All rights reserved.</p>
+    <p class="footer-legal"><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
   </footer>
 
   <script>
