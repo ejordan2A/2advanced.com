@@ -18,6 +18,7 @@ curl -sS -o /dev/null -w "return -> %{http_code}\n" \
 
 # Key at site root (also aliased from /V3ExpansionsReboot/... via Netlify redirect when publish=dist)
 KEY_V3="https://v3.2advanced.com/2advanced-indexnow-2a7k9m4p.txt"
-echo "Pinging v3.2advanced.com..."
+# Canonical path (Netlify normalizes to lowercase /v3expansionsreboot/)
+echo "Pinging v3.2advanced.com (canonical app path)..."
 curl -sS -o /dev/null -w "v3 -> %{http_code}\n" \
-  "https://api.indexnow.org/indexnow?url=https://v3.2advanced.com/V3ExpansionsReboot/&key=${KEY}&keyLocation=${KEY_V3}" || true
+  "https://api.indexnow.org/indexnow?url=https://v3.2advanced.com/v3expansionsreboot/&key=${KEY}&keyLocation=${KEY_V3}" || true
