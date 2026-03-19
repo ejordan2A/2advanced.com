@@ -16,7 +16,8 @@ echo "Pinging return.2advanced.com..."
 curl -sS -o /dev/null -w "return -> %{http_code}\n" \
   "https://api.indexnow.org/indexnow?url=https://return.2advanced.com/&key=${KEY}&keyLocation=${KEY_RETURN}"
 
-KEY_V3="https://v3.2advanced.com/V3ExpansionsReboot/2advanced-indexnow-2a7k9m4p.txt"
-echo "Pinging v3.2advanced.com (key file deployed with V3 build under /V3ExpansionsReboot/)..."
+# Key at site root (also aliased from /V3ExpansionsReboot/... via Netlify redirect when publish=dist)
+KEY_V3="https://v3.2advanced.com/2advanced-indexnow-2a7k9m4p.txt"
+echo "Pinging v3.2advanced.com..."
 curl -sS -o /dev/null -w "v3 -> %{http_code}\n" \
   "https://api.indexnow.org/indexnow?url=https://v3.2advanced.com/V3ExpansionsReboot/&key=${KEY}&keyLocation=${KEY_V3}" || true
