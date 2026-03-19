@@ -28,24 +28,74 @@
   <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://return.2advanced.com" />
 
-  <!-- JSON-LD: Organization + two VideoObjects -->
+  <!-- JSON-LD: Organization + Person (founder) + WebSite + VideoObjects -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
+        "@id": "https://2advanced.com/#organization",
         "name": "2Advanced Studios",
+        "alternateName": "2Advanced",
         "url": "https://2advanced.com",
-        "logo": "https://2advanced.com/assets/2advanced-logo.png",
-        "description": "2Advanced Studios is a world-renowned digital studio pioneering immersive web experiences since 1999.",
-        "foundingDate": "1999",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://2advanced.com/assets/2advanced-logo.png"
+        },
+        "image": "https://2advanced.com/assets/2advanced-logo.png",
+        "description": "2Advanced Studios is a world-renowned digital studio pioneering immersive web experiences since 1999. Known for defining the visual language of the Flash era and continuing to push boundaries in interactive digital design.",
+        "foundingDate": "1999-01-01",
+        "founder": { "@id": "https://2advanced.com/#ericjordan" },
+        "email": "info@2advanced.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "info@2advanced.com",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        },
         "sameAs": [
           "https://www.youtube.com/@2advanced",
           "https://www.patreon.com/2Advanced",
-          "https://shop.2advanced.com",
-          "https://v3.2advanced.com"
+          "https://www.linkedin.com/company/2advanced-studios"
+        ],
+        "knowsAbout": [
+          "Web Design",
+          "Interactive Digital Experiences",
+          "Motion Design",
+          "Creative Direction",
+          "Immersive Web Development",
+          "UI/UX Design",
+          "Digital Art",
+          "Creative Technology"
+        ],
+        "areaServed": "Worldwide"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://2advanced.com/#ericjordan",
+        "name": "Eric Jordan",
+        "url": "https://www.ericjordan.com",
+        "jobTitle": "Founder & Creative Director",
+        "worksFor": { "@id": "https://2advanced.com/#organization" },
+        "sameAs": [ "https://www.ericjordan.com" ],
+        "knowsAbout": [
+          "Creative Direction",
+          "Web Design",
+          "Interactive Design",
+          "Motion Graphics",
+          "Digital Art",
+          "Creative Technology"
         ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://2advanced.com/#website",
+        "name": "2Advanced Studios",
+        "url": "https://2advanced.com",
+        "description": "Official website of 2Advanced Studios, a pioneering digital studio creating immersive web experiences since 1999.",
+        "publisher": { "@id": "https://2advanced.com/#organization" },
+        "inLanguage": "en-US"
       },
       {
         "@type": "VideoObject",
@@ -55,11 +105,7 @@
         "uploadDate": "2024-01-01",
         "embedUrl": "https://www.youtube.com/embed/iV8MATpZuZg",
         "url": "https://www.youtube.com/watch?v=iV8MATpZuZg",
-        "publisher": {
-          "@type": "Organization",
-          "name": "2Advanced Studios",
-          "url": "https://2advanced.com"
-        }
+        "publisher": { "@id": "https://2advanced.com/#organization" }
       },
       {
         "@type": "VideoObject",
@@ -69,11 +115,7 @@
         "uploadDate": "2025-01-01",
         "embedUrl": "https://www.youtube.com/embed/Y1Z9zRCUtr8",
         "url": "https://www.youtube.com/watch?v=Y1Z9zRCUtr8",
-        "publisher": {
-          "@type": "Organization",
-          "name": "2Advanced Studios",
-          "url": "https://2advanced.com"
-        }
+        "publisher": { "@id": "https://2advanced.com/#organization" }
       }
     ]
   }
