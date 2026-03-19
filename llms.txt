@@ -6,11 +6,11 @@
 2Advanced Studios (est. 1999) is known for creating visionary, technology-driven digital experiences. The studio gained international recognition for its series of version-based websites (V1–V5) that defined an era of immersive web design. After years of absence, 2Advanced has returned with new work, new transmissions, and continued innovation.
 
 ## Properties
-- Main site: https://2advanced.com — Studio hub and entry point
-- V3 Expansions Reboot: https://v3.2advanced.com — A re-imagined version of the iconic 2001 Flash-based V3 website, rebuilt entirely in Rive and React
-- Return Transmissions: https://return.2advanced.com — The official return announcement videos and transmissions from 2Advanced Studios
-- Shop: https://shop.2advanced.com — Official gear, apparel, and vector kits
-- Patreon: https://patreon.com/2Advanced — Behind-the-scenes content and early access
+- Main site: https://2advanced.com - Studio hub and entry point
+- V3 Expansions Reboot: https://v3.2advanced.com - A re-imagined version of the iconic 2001 Flash-based V3 website, rebuilt entirely in Rive and React
+- Return Transmissions: https://return.2advanced.com - The official return announcement videos and transmissions from 2Advanced Studios
+- Shop: https://shop.2advanced.com - Official gear, apparel, and vector kits
+- Patreon: https://patreon.com/2Advanced - Behind-the-scenes content and early access
 
 ## Key Facts
 - Founded: 1999

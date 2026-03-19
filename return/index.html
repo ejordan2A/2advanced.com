@@ -7,22 +7,22 @@
   ··             Re:turn - the signal strength is increasing -             ··
   ··                       standby for transmission.                       ··
   ·············································································
-  ··  [TRANSMISSION ACTIVE — SIGNAL RESTORED]                             ··
+  ··  [TRANSMISSION ACTIVE - SIGNAL RESTORED]                             ··
   ·············································································
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RE:TURN — 2Advanced Studios</title>
+  <title>RE:TURN - 2Advanced Studios</title>
   <meta name="description" content="The channel went dark. Now it transmits again. Watch the return of 2Advanced Studios." />
-  <meta property="og:title" content="RE:TURN — 2Advanced Studios" />
+  <meta property="og:title" content="RE:TURN - 2Advanced Studios" />
   <meta property="og:description" content="The channel went dark. Now it transmits again." />
   <meta property="og:image" content="https://img.youtube.com/vi/iV8MATpZuZg/maxresdefault.jpg" />
   <meta property="og:url" content="https://return.2advanced.com" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RE:TURN — 2Advanced Studios" />
+  <meta name="twitter:title" content="RE:TURN - 2Advanced Studios" />
   <meta name="twitter:description" content="The channel went dark. Now it transmits again." />
   <meta name="twitter:image" content="https://img.youtube.com/vi/iV8MATpZuZg/maxresdefault.jpg" />
   <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -154,7 +154,7 @@
       will-change: transform;
     }
 
-    /* Slightly violet-tinted aurora vs the pure teal of the main site — same channel, different frequency */
+    /* Slightly violet-tinted aurora vs the pure teal of the main site - same channel, different frequency */
     .aurora-layer-1 {
       background: linear-gradient(12deg,
         transparent 0%,
@@ -303,7 +303,7 @@
       z-index: 1;
     }
 
-    /* Hue-shift on the image itself — colors move through a prismatic range */
+    /* Hue-shift on the image itself - colors move through a prismatic range */
     .logo-wrap.is-glitching img {
       animation: logo-hue-shift 0.7s ease-in-out forwards;
     }
@@ -363,7 +363,7 @@
       animation: title-glitch 10s ease-in-out infinite;
     }
 
-    /* Periodic glitch — brief, subtle, unmistakably 2A */
+    /* Periodic glitch - brief, subtle, unmistakably 2A */
     @keyframes title-glitch {
       0%, 84%, 100% {
         text-shadow: 0 0 40px rgba(0, 190, 230, 0.45), 0 0 90px rgba(0, 155, 210, 0.2);
@@ -928,6 +928,123 @@
       .signal-signup-eyebrow::before, .signal-signup-eyebrow::after { display: none; }
     }
 
+    /* ─── PATREON DROP KIT TOUT ─── */
+
+    .patreon-tout {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 64px 40px 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .patreon-tout-eyebrow {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(0, 200, 235, 0.55);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .patreon-tout-eyebrow::before,
+    .patreon-tout-eyebrow::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 60px;
+      height: 1px;
+      background: rgba(0, 200, 235, 0.2);
+    }
+    .patreon-tout-eyebrow::before { right: calc(50% + 52px); }
+    .patreon-tout-eyebrow::after  { left:  calc(50% + 52px); }
+
+    .patreon-tout-image-link {
+      display: block;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto 28px;
+      border: 1px solid rgba(0, 165, 210, 0.22);
+      box-shadow: 0 0 30px rgba(0, 140, 200, 0.08);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .patreon-tout-image-link:hover {
+      border-color: rgba(0, 200, 235, 0.4);
+      box-shadow: 0 0 50px rgba(0, 140, 200, 0.15);
+    }
+
+    .patreon-tout-image-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+      vertical-align: top;
+    }
+
+    .patreon-tout-body {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .patreon-tout-body p {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 18px;
+    }
+
+    .patreon-tout-body p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .patreon-tout-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .patreon-tout-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(0, 200, 235, 0.95);
+      border: 1px solid rgba(0, 200, 235, 0.4);
+      background: rgba(0, 80, 120, 0.12);
+      transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .patreon-tout-cta:hover {
+      color: #fff;
+      border-color: rgba(0, 220, 255, 0.7);
+      background: rgba(0, 100, 150, 0.2);
+    }
+
+    .patreon-tout-cta svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .patreon-tout { padding: 48px 24px 64px; }
+      .patreon-tout-eyebrow::before, .patreon-tout-eyebrow::after { display: none; }
+      .patreon-tout-ctas { flex-direction: column; align-items: center; }
+    }
+
     /* ─── PRESS SECTION ─── */
 
     .press-section {
@@ -1126,7 +1243,7 @@
       <span class="corner corner-bl" aria-hidden="true"></span>
       <span class="corner corner-br" aria-hidden="true"></span>
       <div class="video-poster" role="button" aria-label="Play RE:TURN video">
-        <img src="https://img.youtube.com/vi/iV8MATpZuZg/maxresdefault.jpg" alt="RE:TURN — 2Advanced Studios" />
+        <img src="https://img.youtube.com/vi/iV8MATpZuZg/maxresdefault.jpg" alt="RE:TURN - 2Advanced Studios" />
         <div class="play-btn" aria-hidden="true">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="6,3 21,12 6,21"/></svg>
           <span class="play-btn-label">Play</span>
@@ -1134,7 +1251,7 @@
       </div>
       <iframe
         data-src="https://www.youtube.com/embed/iV8MATpZuZg?rel=0&modestbranding=1&color=white&origin=https://return.2advanced.com"
-        title="RE:TURN — 2Advanced Studios"
+        title="RE:TURN - 2Advanced Studios"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
@@ -1152,7 +1269,7 @@
       <span class="corner corner-bl" aria-hidden="true"></span>
       <span class="corner corner-br" aria-hidden="true"></span>
       <div class="video-poster" role="button" aria-label="Play second transmission video">
-        <img src="https://img.youtube.com/vi/Y1Z9zRCUtr8/maxresdefault.jpg" alt="2Advanced Studios — Second Transmission" />
+        <img src="https://img.youtube.com/vi/Y1Z9zRCUtr8/maxresdefault.jpg" alt="2Advanced Studios - Second Transmission" />
         <div class="play-btn" aria-hidden="true">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="6,3 21,12 6,21"/></svg>
           <span class="play-btn-label">Play</span>
@@ -1160,7 +1277,7 @@
       </div>
       <iframe
         data-src="https://www.youtube.com/embed/Y1Z9zRCUtr8?rel=0&modestbranding=1&color=white&origin=https://return.2advanced.com"
-        title="2Advanced Studios — Second Transmission"
+        title="2Advanced Studios - Second Transmission"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
@@ -1170,7 +1287,7 @@
   <section class="signal-signup" aria-label="Newsletter signup">
     <p class="signal-signup-eyebrow">Stay Connected</p>
     <h2 class="signal-signup-heading">Receive the Transmissions</h2>
-    <p class="signal-signup-sub">Updates on new work, behind-the-scenes, and dispatches from the studio. No noise — only signal.</p>
+    <p class="signal-signup-sub">Updates on new work, behind-the-scenes, and dispatches from the studio. No noise... only signal.</p>
 
     <!-- Replace YOUR_PUBLICATION_ID with your Beehiiv publication ID after signup -->
     <form class="signal-form" id="signalForm">
@@ -1189,6 +1306,21 @@
     <p class="signal-signup-note">No spam. Unsubscribe anytime.</p>
   </section>
 
+  <section class="patreon-tout" aria-label="Patreon Diamond Drop Kit">
+    <p class="patreon-tout-eyebrow">Patreon</p>
+    <a href="https://www.patreon.com/posts/q1-2026-drop-153383438?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link" target="_blank" rel="noopener noreferrer" class="patreon-tout-image-link">
+      <img src="assets/dropkit-q1-2026.png" alt="2Advanced Q1 2026 Drop Kit - Diamond Tier Exclusive. Shipping worldwide next week." width="1920" height="756" />
+    </a>
+    <div class="patreon-tout-body">
+      <p>Diamond Members: 2Advanced Q1 2026 drop kit ships worldwide next week... full of exclusive items: early access digital product releases (textures + video kits), rare autographed 2A artwork prints, special wallpapers, discount codes, stickers, and more. Details soon - thanks for your support!</p>
+      <p>Want to support us at the Diamond Level? Upgrade by Monday to be included in this shipment; after that, you&rsquo;ll be in for next quarter&rsquo;s drop.</p>
+      <div class="patreon-tout-ctas">
+        <a href="https://www.patreon.com/posts/q1-2026-drop-153383438?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link" target="_blank" rel="noopener noreferrer" class="patreon-tout-cta">Post details<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M8 3.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://www.patreon.com/c/2advanced/membership" target="_blank" rel="noopener noreferrer" class="patreon-tout-cta">Join / upgrade<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M8 3.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </section>
+
   <section class="press-section" aria-label="Press">
     <p class="press-eyebrow">Press</p>
     <a href="https://www.schoolofmotion.com/blog/2advanced" target="_blank" rel="noopener noreferrer" class="press-feature">
@@ -1196,7 +1328,7 @@
       <div class="press-feature-body">
         <span class="press-feature-outlet">School of Motion</span>
         <span class="press-feature-headline">Rediscovering the Art of Interactive Design with 2Advanced Studios</span>
-        <span class="press-feature-desc">"From Flash to the future — School of Motion sits down with Eric Jordan and Tony Novak to explore the studio's legendary work, the lessons learned from the decline of Flash, and what the next era of interactive design looks like."</span>
+        <span class="press-feature-desc">"From Flash to the future... School of Motion sits down with Eric Jordan and Tony Novak to explore the studio's legendary work, the lessons learned from the decline of Flash, and what the next era of interactive design looks like."</span>
         <span class="press-feature-cta">
           Read the feature
           <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7h10M8 3.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1243,7 +1375,7 @@
       }, delay);
     })();
 
-    // ── Beehiiv signup — proxied via Netlify Function ──
+    // ── Beehiiv signup - proxied via Netlify Function ──
     document.getElementById('signalForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const email = document.getElementById('signalEmail').value.trim();
