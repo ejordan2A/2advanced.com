@@ -14,7 +14,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin />
   <title>RE:TURN - 2Advanced Studios</title>
   <meta name="description" content="The channel went dark. Now it transmits again. Watch the return of 2Advanced Studios." />
   <meta property="og:title" content="RE:TURN - 2Advanced Studios" />
@@ -1287,11 +1287,11 @@
         </div>
       </div>
       <iframe
-        data-src="https://www.youtube-nocookie.com/embed/iV8MATpZuZg?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
+        src="https://www.youtube-nocookie.com/embed/iV8MATpZuZg?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
         title="RE:TURN - 2Advanced Studios"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin"
+        referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </div>
   </section>
@@ -1314,11 +1314,12 @@
         </div>
       </div>
       <iframe
-        data-src="https://www.youtube-nocookie.com/embed/Y1Z9zRCUtr8?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
+        src="https://www.youtube-nocookie.com/embed/Y1Z9zRCUtr8?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
         title="2Advanced Studios - Second Transmission"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </div>
   </section>
@@ -1451,9 +1452,11 @@
       poster.addEventListener('click', () => {
         const frame = poster.closest('.video-frame');
         const iframe = frame.querySelector('iframe');
-        iframe.src = iframe.dataset.src + '&autoplay=1';
+        const u = new URL(iframe.getAttribute('src'));
+        u.searchParams.set('autoplay', '1');
+        iframe.src = u.toString();
         poster.classList.add('is-hidden');
-        setTimeout(() => poster.style.display = 'none', 450);
+        setTimeout(() => { poster.style.display = 'none'; }, 450);
       });
     });
   </script>
