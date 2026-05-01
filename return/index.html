@@ -826,6 +826,28 @@
       pointer-events: none;
     }
 
+    .video-watch-fallback {
+      margin-top: 0.65rem;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.34);
+      line-height: 1.55;
+    }
+
+    .video-watch-fallback a {
+      color: rgba(0, 200, 235, 0.78);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 200, 235, 0.28);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .video-watch-fallback a:hover {
+      color: rgba(0, 228, 255, 0.95);
+      border-bottom-color: rgba(0, 228, 255, 0.5);
+    }
+
     /* ─── SIGNAL SIGNUP ─── */
 
     .signal-signup {
@@ -1287,13 +1309,18 @@
         </div>
       </div>
       <iframe
-        src="https://www.youtube-nocookie.com/embed/iV8MATpZuZg?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
+        data-src="https://www.youtube-nocookie.com/embed/iV8MATpZuZg?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
         title="RE:TURN - 2Advanced Studios"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </div>
+    <p class="video-watch-fallback">
+      If YouTube shows a sign-in or bot check inside the player,
+      <a href="https://www.youtube.com/watch?v=iV8MATpZuZg" target="_blank" rel="noopener noreferrer">watch this transmission on YouTube</a>
+      (opens in a new tab).
+    </p>
   </section>
 
   <section class="transmission transmission--second" aria-label="Second transmission">
@@ -1314,14 +1341,18 @@
         </div>
       </div>
       <iframe
-        src="https://www.youtube-nocookie.com/embed/Y1Z9zRCUtr8?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
+        data-src="https://www.youtube-nocookie.com/embed/Y1Z9zRCUtr8?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
         title="2Advanced Studios - Second Transmission"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
-        loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </div>
+    <p class="video-watch-fallback">
+      If YouTube shows a sign-in or bot check inside the player,
+      <a href="https://www.youtube.com/watch?v=Y1Z9zRCUtr8" target="_blank" rel="noopener noreferrer">watch this transmission on YouTube</a>
+      (opens in a new tab).
+    </p>
   </section>
 
   <section class="signal-signup" aria-label="Newsletter signup">
@@ -1452,7 +1483,7 @@
       poster.addEventListener('click', () => {
         const frame = poster.closest('.video-frame');
         const iframe = frame.querySelector('iframe');
-        const u = new URL(iframe.getAttribute('src'));
+        const u = new URL(iframe.dataset.src);
         u.searchParams.set('autoplay', '1');
         iframe.src = u.toString();
         poster.classList.add('is-hidden');
