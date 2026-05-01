@@ -734,6 +734,8 @@
       cursor: pointer;
       overflow: hidden;
       transition: opacity 0.45s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .video-poster img {
@@ -742,6 +744,9 @@
       object-fit: cover;
       display: block;
       transition: transform 0.7s ease;
+      -webkit-user-drag: none;
+      user-select: none;
+      -webkit-touch-callout: none;
     }
 
     .video-poster:hover img {
@@ -756,6 +761,7 @@
       background: rgba(0, 0, 0, 0.42);
       z-index: 1;
       transition: background 0.35s ease;
+      pointer-events: none;
     }
 
     .video-poster:hover::before {
@@ -1301,7 +1307,7 @@
       <span class="corner corner-tr" aria-hidden="true"></span>
       <span class="corner corner-bl" aria-hidden="true"></span>
       <span class="corner corner-br" aria-hidden="true"></span>
-      <div class="video-poster" role="button" aria-label="Play RE:TURN video">
+      <div class="video-poster" role="button" tabindex="0" aria-label="Play RE:TURN video">
         <img src="https://img.youtube.com/vi/iV8MATpZuZg/maxresdefault.jpg" alt="RE:TURN - 2Advanced Studios" />
         <div class="play-btn" aria-hidden="true">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="6,3 21,12 6,21"/></svg>
@@ -1311,7 +1317,7 @@
       <iframe
         data-src="https://www.youtube-nocookie.com/embed/iV8MATpZuZg?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
         title="RE:TURN - 2Advanced Studios"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
         allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
@@ -1333,7 +1339,7 @@
       <span class="corner corner-tr" aria-hidden="true"></span>
       <span class="corner corner-bl" aria-hidden="true"></span>
       <span class="corner corner-br" aria-hidden="true"></span>
-      <div class="video-poster" role="button" aria-label="Play second transmission video">
+      <div class="video-poster" role="button" tabindex="0" aria-label="Play second transmission video">
         <img src="https://img.youtube.com/vi/Y1Z9zRCUtr8/maxresdefault.jpg" alt="2Advanced Studios - Second Transmission" />
         <div class="play-btn" aria-hidden="true">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="6,3 21,12 6,21"/></svg>
@@ -1343,7 +1349,7 @@
       <iframe
         data-src="https://www.youtube-nocookie.com/embed/Y1Z9zRCUtr8?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
         title="2Advanced Studios - Second Transmission"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
         allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
@@ -1479,15 +1485,31 @@
       }
     });
 
+    function activateTransmission(poster) {
+      if (poster.dataset.activated === '1') return;
+      poster.dataset.activated = '1';
+      const frame = poster.closest('.video-frame');
+      const iframe = frame.querySelector('iframe');
+      const u = new URL(iframe.dataset.src);
+      u.searchParams.set('autoplay', '1');
+      const mobileLike =
+        window.matchMedia('(pointer: coarse)').matches ||
+        window.matchMedia('(max-width: 767px)').matches;
+      if (mobileLike) {
+        u.searchParams.set('mute', '1');
+      }
+      iframe.src = u.toString();
+      poster.classList.add('is-hidden');
+      setTimeout(() => { poster.style.display = 'none'; }, 450);
+    }
+
     document.querySelectorAll('.video-poster').forEach(poster => {
-      poster.addEventListener('click', () => {
-        const frame = poster.closest('.video-frame');
-        const iframe = frame.querySelector('iframe');
-        const u = new URL(iframe.dataset.src);
-        u.searchParams.set('autoplay', '1');
-        iframe.src = u.toString();
-        poster.classList.add('is-hidden');
-        setTimeout(() => { poster.style.display = 'none'; }, 450);
+      poster.addEventListener('click', () => activateTransmission(poster));
+      poster.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activateTransmission(poster);
+        }
       });
     });
   </script>
