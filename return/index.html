@@ -14,6 +14,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>RE:TURN - 2Advanced Studios</title>
   <meta name="description" content="The channel went dark. Now it transmits again. Watch the return of 2Advanced Studios." />
   <meta property="og:title" content="RE:TURN - 2Advanced Studios" />
@@ -103,7 +104,7 @@
         "description": "The official return announcement of 2Advanced Studios after years of absence from the web.",
         "thumbnailUrl": "https://img.youtube.com/vi/iV8MATpZuZg/maxresdefault.jpg",
         "uploadDate": "2024-01-01",
-        "embedUrl": "https://www.youtube.com/embed/iV8MATpZuZg",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/iV8MATpZuZg",
         "url": "https://www.youtube.com/watch?v=iV8MATpZuZg",
         "publisher": { "@id": "https://2advanced.com/#organization" }
       },
@@ -113,7 +114,7 @@
         "description": "2Advanced Studios returns and showcases a collection of classic work from the studio's history.",
         "thumbnailUrl": "https://img.youtube.com/vi/Y1Z9zRCUtr8/maxresdefault.jpg",
         "uploadDate": "2025-01-01",
-        "embedUrl": "https://www.youtube.com/embed/Y1Z9zRCUtr8",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/Y1Z9zRCUtr8",
         "url": "https://www.youtube.com/watch?v=Y1Z9zRCUtr8",
         "publisher": { "@id": "https://2advanced.com/#organization" }
       }
@@ -1149,12 +1150,6 @@
     .press-feature:hover { border-color: rgba(0, 200, 235, 0.28); }
     .press-feature:hover::before { opacity: 1; }
 
-    .press-feature-accent {
-      flex-shrink: 0;
-      width: 3px;
-      background: linear-gradient(180deg, rgba(0,200,235,0.7) 0%, rgba(0,140,200,0.2) 100%);
-    }
-
     .press-feature-body {
       flex: 1;
       padding: 32px 36px;
@@ -1292,10 +1287,11 @@
         </div>
       </div>
       <iframe
-        data-src="https://www.youtube.com/embed/iV8MATpZuZg?rel=0&modestbranding=1&color=white&origin=https://return.2advanced.com"
+        data-src="https://www.youtube-nocookie.com/embed/iV8MATpZuZg?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
         title="RE:TURN - 2Advanced Studios"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
     </div>
   </section>
@@ -1318,10 +1314,11 @@
         </div>
       </div>
       <iframe
-        data-src="https://www.youtube.com/embed/Y1Z9zRCUtr8?rel=0&modestbranding=1&color=white&origin=https://return.2advanced.com"
+        data-src="https://www.youtube-nocookie.com/embed/Y1Z9zRCUtr8?rel=0&modestbranding=1&color=white&playsinline=1&origin=https://return.2advanced.com"
         title="2Advanced Studios - Second Transmission"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
     </div>
   </section>
@@ -1366,7 +1363,6 @@
   <section class="press-section" aria-label="Press">
     <p class="press-eyebrow">Press</p>
     <a href="https://www.schoolofmotion.com/blog/2advanced" target="_blank" rel="noopener noreferrer" class="press-feature">
-      <span class="press-feature-accent"></span>
       <div class="press-feature-body">
         <span class="press-feature-outlet">School of Motion</span>
         <span class="press-feature-headline">Rediscovering the Art of Interactive Design with 2Advanced Studios</span>
