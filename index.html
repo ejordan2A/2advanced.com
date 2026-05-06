@@ -783,6 +783,104 @@
       .tour:nth-child(odd)   { border-right: 1px solid rgba(255,255,255,0.1); }
       .tour:nth-child(-n+2)  { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.25rem; margin-bottom: 1rem; }
     }
+
+    /* ─── KESey Signal tout (homepage) ─── */
+
+    .kesey-tout {
+      width: 100%;
+      max-width: 480px;
+      margin: 28px auto 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .kesey-tout a {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0, 0, 0, 0.22);
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(0, 140, 200, 0.10);
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: border-color 0.35s ease, background 0.35s ease;
+    }
+
+    .kesey-tout a:hover {
+      border-color: rgba(0, 200, 235, 0.26);
+      background: rgba(0, 0, 0, 0.30);
+    }
+
+    .kesey-tout-media {
+      height: 160px;
+      aspect-ratio: 350 / 522;
+      width: auto;
+      border: 1px solid rgba(0, 165, 210, 0.22);
+      background: #000;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(0, 150, 195, 0.08);
+    }
+
+    .kesey-tout-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: saturate(1.03) contrast(1.02);
+      transform: none;
+    }
+
+    .kesey-tout-kicker {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(0, 200, 235, 0.62);
+      margin-bottom: 4px;
+    }
+
+    .kesey-tout-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.90);
+      line-height: 1.2;
+    }
+
+    .kesey-tout-desc {
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.55;
+    }
+
+    .kesey-tout-cta {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(0, 200, 235, 0.55);
+    }
+
+    .kesey-tout-cta::after { content: none; }
+
+    @media (max-width: 680px) {
+      .kesey-tout { margin: 18px auto 10px; }
+      .kesey-tout a { grid-template-columns: 1fr; }
+      .kesey-tout-media { width: 100%; height: 240px; }
+    }
   </style>
 </head>
 <body>
@@ -838,6 +936,22 @@
     </div>
   </main>
 
+  <section class="kesey-tout" aria-label="The Kesey Signal book">
+    <a href="https://thefwa.com/about/the-kesey-signal/" target="_blank" rel="noopener noreferrer">
+      <div class="kesey-tout-media">
+        <img src="assets/kesey-signal-book-cover.png" alt="The Kesey Signal book by Rob Ford (The FWA)" width="1024" height="576" />
+      </div>
+      <div class="kesey-tout-body">
+        <div class="kesey-tout-kicker">Book Release by Rob Ford (FWA)</div>
+        <div class="kesey-tout-title">The Kesey Signal</div>
+        <p class="kesey-tout-desc">
+          The archive is open. The Kesey Signal is the first thriller born from the lost Flash websites and pioneers of the early web. Dive into the FWA dossier and secure your copy.
+        </p>
+        <div class="kesey-tout-cta">Read on The FWA</div>
+      </div>
+    </a>
+  </section>
+
   <footer>
     <nav class="tours" aria-label="Explore">
       <a href="https://return.2advanced.com" class="tour">
@@ -850,7 +964,7 @@
       </a>
       <a href="https://www.patreon.com/2Advanced" target="_blank" rel="noopener noreferrer" class="tour">
         <span class="tour-label">Patreon</span>
-        <span class="tour-desc">Behind the scenes & early access</span>
+        <span class="tour-desc">Special content and digital assets</span>
       </a>
       <a href="mailto:info@2advanced.com?subject=Inquiry" class="tour">
         <span class="tour-label">Contact</span>
