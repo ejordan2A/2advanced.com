@@ -784,34 +784,44 @@
       .tour:nth-child(-n+2)  { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.25rem; margin-bottom: 1rem; }
     }
 
-    /* ─── Kesey Signal tout (homepage) ─── */
+    /* Kesey Signal feature touts */
 
-    .kesey-tout {
+    .feature-touts {
       width: 100%;
-      max-width: 480px;
+      max-width: 1040px;
       margin: 28px auto 16px;
+      padding: 0 1.5rem;
       position: relative;
       z-index: 2;
     }
 
-    .kesey-tout a {
+    .kesey-touts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .kesey-tout {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 18px;
       align-items: center;
       padding: 14px 16px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(0, 200, 235, 0.32);
       background: rgba(0, 0, 0, 0.22);
       box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.9),
-        0 0 40px rgba(0, 140, 200, 0.10);
+        0 0 0 2px rgba(255, 255, 255, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 0 40px rgba(0, 140, 200, 0.16);
       text-decoration: none;
       color: inherit;
       overflow: hidden;
       transition: border-color 0.35s ease, background 0.35s ease;
     }
 
-    .kesey-tout a:hover {
+    .kesey-tout:hover {
       border-color: rgba(0, 200, 235, 0.26);
       background: rgba(0, 0, 0, 0.30);
     }
@@ -833,6 +843,10 @@
       display: block;
       filter: saturate(1.03) contrast(1.02);
       transform: none;
+    }
+
+    .kesey-tout--microsite .kesey-tout-media img {
+      object-fit: cover;
     }
 
     .kesey-tout-kicker {
@@ -876,10 +890,73 @@
 
     .kesey-tout-cta::after { content: none; }
 
+    .signal-news {
+      margin: 18px auto 0;
+      border: 1px solid rgba(0, 200, 235, 0.28);
+      background: rgba(0, 0, 0, 0.16);
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 0 0 2px rgba(255, 255, 255, 0.06),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+        0 0 34px rgba(0, 140, 200, 0.12);
+      color: rgba(255,255,255,0.56);
+    }
+
+    .signal-news-label {
+      padding: 10px 14px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(0, 200, 235, 0.48);
+    }
+
+    .signal-news-list {
+      list-style: none;
+    }
+
+    .signal-news-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 11px 14px 13px;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+    }
+
+    .signal-news-date {
+      flex: 0 0 auto;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .signal-news-list a {
+      flex: 0 0 auto;
+      color: rgba(0, 200, 235, 0.68);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      transition: color 0.25s ease;
+    }
+
+    .signal-news-list a:hover {
+      color: rgba(255,255,255,0.9);
+    }
+
     @media (max-width: 680px) {
-      .kesey-tout { margin: 18px auto 10px; }
-      .kesey-tout a { grid-template-columns: 1fr; }
+      .feature-touts { margin: 18px auto 10px; }
+      .kesey-touts { grid-template-columns: 1fr; }
+      .kesey-tout { grid-template-columns: 1fr; }
       .kesey-tout-media { width: 100%; height: 240px; }
+      .signal-news-list li { flex-direction: column; gap: 5px; }
     }
   </style>
 </head>
@@ -936,20 +1013,57 @@
     </div>
   </main>
 
-  <section class="kesey-tout" aria-label="The Kesey Signal book">
-    <a href="https://thefwa.com/about/the-kesey-signal/" target="_blank" rel="noopener noreferrer">
-      <div class="kesey-tout-media">
-        <img src="assets/kesey-signal-book-cover.png" alt="The Kesey Signal book by Rob Ford (The FWA)" width="1024" height="576" />
-      </div>
-      <div class="kesey-tout-body">
-        <div class="kesey-tout-kicker">Book Release by Rob Ford (FWA)</div>
-        <div class="kesey-tout-title">The Kesey Signal</div>
-        <p class="kesey-tout-desc">
-          The archive is open. The Kesey Signal is the first thriller born from the lost Flash websites and pioneers of the early web. Dive into the FWA dossier and secure your copy.
-        </p>
-        <div class="kesey-tout-cta">Read on The FWA</div>
-      </div>
-    </a>
+  <section class="feature-touts" aria-label="Featured transmissions">
+    <div class="kesey-touts">
+      <a href="https://keseysignal.2advanced.com" target="_blank" rel="noopener noreferrer" class="kesey-tout kesey-tout--microsite">
+        <div class="kesey-tout-media">
+          <img src="assets/kesey-signal-field-station-02.png" alt="The Kesey Signal Field Station 02 microsite interface" width="1024" height="768" />
+        </div>
+        <div class="kesey-tout-body">
+          <div class="kesey-tout-kicker">Field Station 02 Microsite</div>
+          <div class="kesey-tout-title">The Kesey Signal</div>
+          <p class="kesey-tout-desc">
+            Enter the 2Advanced Field Station 02 dossier for Rob Ford's cyber-noir thriller, desktop kit, and enter to win one of 7 signed posters.
+          </p>
+          <div class="kesey-tout-cta">Launch microsite</div>
+        </div>
+      </a>
+
+      <a href="https://thefwa.com/about/the-kesey-signal/" target="_blank" rel="noopener noreferrer" class="kesey-tout kesey-tout--book">
+        <div class="kesey-tout-media">
+          <img src="assets/kesey-signal-book-cover.png" alt="The Kesey Signal book by Rob Ford (The FWA)" width="1024" height="576" />
+        </div>
+        <div class="kesey-tout-body">
+          <div class="kesey-tout-kicker">Book Release by Rob Ford (FWA)</div>
+          <div class="kesey-tout-title">The Kesey Signal</div>
+          <p class="kesey-tout-desc">
+            The archive is open. The Kesey Signal is the first thriller born from the lost Flash websites and pioneers of the early web. Dive into the FWA dossier and secure your copy.
+          </p>
+          <div class="kesey-tout-cta">Read on The FWA</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="signal-news" aria-label="Latest news">
+      <div class="signal-news-label">News</div>
+      <ul class="signal-news-list">
+        <li>
+          <time class="signal-news-date" datetime="2026-05-11">May 11</time>
+          <span>The Kesey Signal Field Station 02 is nominated for CSS Design Awards Website of the Day.</span>
+          <a href="https://www.cssdesignawards.com/wotd-award-nominees" target="_blank" rel="noopener noreferrer">Vote</a>
+        </li>
+        <li>
+          <time class="signal-news-date" datetime="2026-05-11">May 11</time>
+          <span>The Kesey Signal Field Station 02 microsite by 2Advanced Studios is now live.</span>
+          <a href="https://keseysignal.2advanced.com" target="_blank" rel="noopener noreferrer">Launch</a>
+        </li>
+        <li>
+          <time class="signal-news-date" datetime="2026-04-22">Apr 22</time>
+          <span>2Advanced invited to judge the Impossible UI Challenge by Rive + Contra.</span>
+          <a href="https://contra.com/community/topic/impossibleuiwithrive" target="_blank" rel="noopener noreferrer">Challenge</a>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <footer>
