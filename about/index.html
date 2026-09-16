@@ -662,27 +662,28 @@
 
     .about-hero {
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      gap: clamp(2rem, 5vw, 4.5rem);
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.75fr);
+      gap: clamp(1.5rem, 3.5vw, 3rem);
       align-items: center;
     }
 
     .about-portrait {
       position: relative;
-      width: min(280px, 42vw);
-      max-width: 280px;
-      aspect-ratio: 1 / 1;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: #0a1418;
+      width: 100%;
+      max-width: none;
+      aspect-ratio: 2.15 / 1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #060a0c;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 150, 195, 0.06);
-      justify-self: start;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 150, 195, 0.08);
+      justify-self: stretch;
     }
 
     .about-portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
     }
 
@@ -1214,8 +1215,8 @@
     }
 
     @media (max-width: 720px) {
-      .about-hero { grid-template-columns: 1fr; gap: 2rem; }
-      .about-portrait { max-width: 200px; width: min(200px, 50vw); }
+      .about-hero { grid-template-columns: 1fr; gap: 1.75rem; }
+      .about-portrait { width: 100%; max-width: none; aspect-ratio: 2.15 / 1; }
       .about-back { margin-bottom: 2.25rem; }
       .about-body { column-count: 1; }
     }
@@ -1624,7 +1625,7 @@
 
     <section class="about-hero">
       <figure class="about-portrait">
-        <img src="ej-portrait.jpg" alt="Portrait of Eric Jordan" width="900" height="900" />
+        <img src="ej-portrait-wide.jpg" alt="Eric Jordan with 2Advanced mark" width="1935" height="900" />
       </figure>
       <div class="about-lead">
         <p class="about-eyebrow">Founder · 2Advanced Studios</p>
