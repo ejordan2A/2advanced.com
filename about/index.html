@@ -1214,8 +1214,8 @@
     }
 
     @media (max-width: 720px) {
-      .about-hero { grid-template-columns: 1fr; gap: 1.75rem; }
-      .about-portrait { width: 100%; max-width: none; aspect-ratio: 2.15 / 1; }
+      .about-hero { grid-template-columns: 1fr; gap: 2rem; }
+      .about-portrait { max-width: 200px; width: min(200px, 50vw); }
       .about-back { margin-bottom: 2.25rem; }
       .about-body { column-count: 1; }
     }
@@ -1624,7 +1624,7 @@
 
     <section class="about-hero">
       <figure class="about-portrait">
-        <img src="ej-portrait-wide.jpg" alt="Eric Jordan with 2Advanced mark" width="1935" height="900" />
+        <img src="ej-portrait.jpg" alt="Portrait of Eric Jordan" width="900" height="900" />
       </figure>
       <div class="about-lead">
         <p class="about-eyebrow">Founder · 2Advanced Studios</p>
