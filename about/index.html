@@ -1176,22 +1176,37 @@
       text-align: center;
     }
 
-    /* Mid widths: drop cycler under copy so the studio blurb stays readable */
+    /* Mid widths: full vertical stack so logo, copy, and cycler share one measure
+       (side-by-side mark+body over a wide thumbnail was reading unbalanced). */
     @media (max-width: 1100px) {
       .info-partner--studio {
-        grid-template-columns: auto 1fr;
+        grid-template-columns: 1fr;
         grid-template-areas:
-          "mark body"
-          "cycler cycler";
+          "mark"
+          "body"
+          "cycler";
+        justify-items: start;
         align-items: start;
-        gap: 1.35rem 1.5rem;
+        gap: 1.15rem;
       }
       .info-partner--studio .studio-cycler {
-        width: min(100%, 420px);
-        max-width: 420px;
-        justify-self: start;
+        width: 100%;
+        max-width: none;
+        justify-self: stretch;
         align-self: start;
+        margin-top: 0.35rem;
       }
+      .about-hero {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        align-items: start;
+      }
+      .about-portrait {
+        width: min(280px, 42vw);
+        max-width: 280px;
+        aspect-ratio: 1 / 1;
+      }
+      .about-lead { max-width: 34rem; }
     }
 
     @media (max-width: 700px) {
@@ -1245,10 +1260,9 @@
     }
 
     @media (max-width: 720px) {
-      .about-hero { grid-template-columns: 1fr; gap: 2rem; }
-      .about-portrait { max-width: 200px; width: min(200px, 50vw); }
       .about-back { margin-bottom: 2.25rem; }
       .about-body { column-count: 1; }
+      .about-lead { max-width: none; }
     }
 
     footer {
