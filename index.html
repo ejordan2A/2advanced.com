@@ -962,16 +962,25 @@
       font-variant-numeric: tabular-nums;
     }
 
-    .signal-news-list li > span {
+    .signal-news-list a.signal-news-text {
       color: rgba(255, 255, 255, 0.82);
       min-width: 0;
+      text-decoration: none;
+      text-transform: none;
+      font-size: inherit;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: inherit;
+      white-space: normal;
+      align-self: baseline;
+      transition: color 0.2s ease;
     }
 
-    .signal-news-list li:hover > span {
+    .signal-news-list li:hover > a.signal-news-text {
       color: #fff;
     }
 
-    .signal-news-list a {
+    .signal-news-list a.signal-news-cta {
       color: rgba(190, 228, 242, 0.72);
       text-decoration: none;
       text-transform: uppercase;
@@ -983,7 +992,7 @@
       transition: color 0.25s ease;
     }
 
-    .signal-news-list a:hover {
+    .signal-news-list a.signal-news-cta:hover {
       color: rgba(0, 224, 255, 1);
     }
 
@@ -1093,7 +1102,7 @@
         gap: 0.25rem;
         padding: 0.95rem 0;
       }
-      .signal-news-list a { justify-self: start; }
+      .signal-news-list a.signal-news-cta { justify-self: start; }
     }
   </style>
 </head>
@@ -1180,63 +1189,63 @@
       <ul class="signal-news-list">
         <li>
           <time class="signal-news-date" datetime="2026-09-17">Sep 17</time>
-          <span>2Advanced launches the new 2A Gear Store for apparel, sound kits, and digital tools.</span>
-          <a href="https://shop.2advanced.com/" target="_blank" rel="noopener noreferrer">Shop</a>
+          <a class="signal-news-text" href="https://shop.2advanced.com/collections/posters-prints/products/2advanced-attractor-edge-of-the-ocean-poster" target="_blank" rel="noopener noreferrer">The classic Attractor Edge of the Ocean poster is now available in 24x36 and 12x18.</a>
+          <a href="https://shop.2advanced.com/collections/posters-prints/products/2advanced-attractor-edge-of-the-ocean-poster" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Shop</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-09-17">Sep 17</time>
-          <span>The classic Attractor Edge of the Ocean poster is now available in 24x36 and 12x18.</span>
-          <a href="https://shop.2advanced.com/collections/posters-prints/products/2advanced-attractor-edge-of-the-ocean-poster" target="_blank" rel="noopener noreferrer">Shop</a>
+          <a class="signal-news-text" href="https://shop.2advanced.com/" target="_blank" rel="noopener noreferrer">2Advanced launches the new 2A Gear Store for apparel, sound kits, and digital tools.</a>
+          <a href="https://shop.2advanced.com/" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Shop</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-09-16">Sep 16</time>
-          <span>2Advanced launches an archived Flash version of Attractor V5, restored through Ruffle.</span>
-          <a href="https://v5attractor.2advanced.com" target="_blank" rel="noopener noreferrer">Launch</a>
+          <a class="signal-news-text" href="https://v5attractor.2advanced.com" target="_blank" rel="noopener noreferrer">2Advanced launches an archived Flash version of Attractor V5, restored through Ruffle.</a>
+          <a href="https://v5attractor.2advanced.com" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Launch</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-09-13">Sep 13</time>
-          <span>2Advanced releases TextCode 2.1, an Illustrator panel for FUI text textures.</span>
-          <a href="https://www.patreon.com/2Advanced/posts/textcode-v2-1-0-169412635" target="_blank" rel="noopener noreferrer">Patreon</a>
+          <a class="signal-news-text" href="https://www.patreon.com/2Advanced/posts/textcode-v2-1-0-169412635" target="_blank" rel="noopener noreferrer">2Advanced releases TextCode 2.1, an Illustrator panel for FUI text textures.</a>
+          <a href="https://www.patreon.com/2Advanced/posts/textcode-v2-1-0-169412635" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Patreon</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-07-23">Jul 23</time>
-          <span>The Prophecy V4 Flash archive wins FWA of the Day.</span>
-          <a href="https://thefwa.com/cases/2advanced-studios-prophecy" target="_blank" rel="noopener noreferrer">FWA</a>
+          <a class="signal-news-text" href="https://thefwa.com/cases/2advanced-studios-prophecy" target="_blank" rel="noopener noreferrer">The Prophecy V4 Flash archive wins FWA of the Day.</a>
+          <a href="https://thefwa.com/cases/2advanced-studios-prophecy" class="signal-news-cta" target="_blank" rel="noopener noreferrer">FWA</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-07-13">Jul 13</time>
-          <span>2Advanced launches an archived Flash version of Prophecy V4, restored through Ruffle.</span>
-          <a href="https://v4prophecy.2advanced.com" target="_blank" rel="noopener noreferrer">Launch</a>
+          <a class="signal-news-text" href="https://v4prophecy.2advanced.com" target="_blank" rel="noopener noreferrer">2Advanced launches an archived Flash version of Prophecy V4, restored through Ruffle.</a>
+          <a href="https://v4prophecy.2advanced.com" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Launch</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-06-26">Jun 26</time>
-          <span>2Advanced releases Hypertone, a sound kit for interface and motion design.</span>
-          <a href="https://www.patreon.com/2Advanced/posts/hypertone-our-162049579?utm_medium=clipboard_copy&amp;utm_source=copyLink&amp;utm_campaign=postshare_creator&amp;utm_content=join_link" target="_blank" rel="noopener noreferrer">Patreon</a>
+          <a class="signal-news-text" href="https://www.patreon.com/2Advanced/posts/hypertone-our-162049579?utm_medium=clipboard_copy&amp;utm_source=copyLink&amp;utm_campaign=postshare_creator&amp;utm_content=join_link" target="_blank" rel="noopener noreferrer">2Advanced releases Hypertone, a sound kit for interface and motion design.</a>
+          <a href="https://www.patreon.com/2Advanced/posts/hypertone-our-162049579?utm_medium=clipboard_copy&amp;utm_source=copyLink&amp;utm_campaign=postshare_creator&amp;utm_content=join_link" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Patreon</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-05-19">May 19</time>
-          <span>The Kesey Signal Field Station 02 microsite is nominated on Awwwards.</span>
-          <a href="https://www.awwwards.com/sites/2advanced-field-station-02" target="_blank" rel="noopener noreferrer">Vote</a>
+          <a class="signal-news-text" href="https://www.awwwards.com/sites/2advanced-field-station-02" target="_blank" rel="noopener noreferrer">The Kesey Signal Field Station 02 microsite is nominated on Awwwards.</a>
+          <a href="https://www.awwwards.com/sites/2advanced-field-station-02" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Vote</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-05-15">May 15</time>
-          <span>Eric Jordan of 2Advanced Studios judges Rive's Impossible UI Challenge on Contra.</span>
-          <a href="https://www.youtube.com/watch?v=FMlA-Pnjiu0&amp;t=" target="_blank" rel="noopener noreferrer">Watch</a>
+          <a class="signal-news-text" href="https://www.youtube.com/watch?v=FMlA-Pnjiu0&amp;t=" target="_blank" rel="noopener noreferrer">Eric Jordan of 2Advanced Studios judges Rive's Impossible UI Challenge on Contra.</a>
+          <a href="https://www.youtube.com/watch?v=FMlA-Pnjiu0&amp;t=" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Watch</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-05-11">May 11</time>
-          <span>The Kesey Signal Field Station 02 microsite by 2Advanced Studios is now live.</span>
-          <a href="https://keseysignal.2advanced.com" target="_blank" rel="noopener noreferrer">Launch</a>
+          <a class="signal-news-text" href="https://keseysignal.2advanced.com" target="_blank" rel="noopener noreferrer">The Kesey Signal Field Station 02 microsite by 2Advanced Studios is now live.</a>
+          <a href="https://keseysignal.2advanced.com" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Launch</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-04-30">Apr 30</time>
-          <span>2Advanced Studios ships Diamond Level drop kits to Patreon members worldwide.</span>
-          <a href="https://www.patreon.com/posts/156939499" target="_blank" rel="noopener noreferrer">Patreon</a>
+          <a class="signal-news-text" href="https://www.patreon.com/posts/156939499" target="_blank" rel="noopener noreferrer">2Advanced Studios ships Diamond Level drop kits to Patreon members worldwide.</a>
+          <a href="https://www.patreon.com/posts/156939499" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Patreon</a>
         </li>
         <li>
           <time class="signal-news-date" datetime="2026-04-22">Apr 22</time>
-          <span>2Advanced invited to judge the Impossible UI Challenge by Rive + Contra.</span>
-          <a href="https://contra.com/community/topic/impossibleuiwithrive" target="_blank" rel="noopener noreferrer">Challenge</a>
+          <a class="signal-news-text" href="https://contra.com/community/topic/impossibleuiwithrive" target="_blank" rel="noopener noreferrer">2Advanced invited to judge the Impossible UI Challenge by Rive + Contra.</a>
+          <a href="https://contra.com/community/topic/impossibleuiwithrive" class="signal-news-cta" target="_blank" rel="noopener noreferrer">Challenge</a>
         </li>
       </ul>
     </div>
