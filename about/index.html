@@ -662,28 +662,27 @@
 
     .about-hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.75fr);
-      gap: clamp(1.5rem, 3.5vw, 3rem);
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 4.5rem);
       align-items: center;
     }
 
     .about-portrait {
       position: relative;
-      width: 100%;
-      max-width: none;
-      aspect-ratio: 2.15 / 1;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: #060a0c;
+      width: min(280px, 42vw);
+      max-width: 280px;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #0a1418;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 150, 195, 0.08);
-      justify-self: stretch;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 150, 195, 0.06);
+      justify-self: start;
     }
 
     .about-portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
       display: block;
     }
 
