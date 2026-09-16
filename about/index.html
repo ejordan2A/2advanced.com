@@ -1116,14 +1116,20 @@
     .info-partner--studio {
       margin: 0 0 2.5rem;
       grid-template-columns: auto 1fr auto;
+      grid-template-areas: "mark body cycler";
+      align-items: center;
     }
+    .info-partner--studio > .info-partner-mark { grid-area: mark; }
+    .info-partner--studio > .info-partner-body { grid-area: body; }
+    .info-partner--studio > .studio-cycler { grid-area: cycler; }
     .info-partner--studio .info-partner-kicker { color: rgba(255, 255, 255, 0.7); }
     .info-partner--studio .info-partner-mark img { width: 54px; height: 54px; }
     .info-partner--studio .info-partner-body p { margin-bottom: 0; }
 
     /* Studio version image cycler (right column of the lead-in card) */
     .studio-cycler {
-      width: 292px;
+      width: min(292px, 28vw);
+      max-width: 292px;
       display: flex;
       flex-direction: column;
       gap: 0.6rem;
@@ -1170,8 +1176,33 @@
       text-align: center;
     }
 
+    /* Mid widths: drop cycler under copy so the studio blurb stays readable */
+    @media (max-width: 1100px) {
+      .info-partner--studio {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+          "mark body"
+          "cycler cycler";
+        align-items: start;
+        gap: 1.35rem 1.5rem;
+      }
+      .info-partner--studio .studio-cycler {
+        width: min(100%, 420px);
+        max-width: 420px;
+        justify-self: start;
+        align-self: start;
+      }
+    }
+
     @media (max-width: 700px) {
-      .info-partner--studio { grid-template-columns: 1fr; justify-items: start; }
+      .info-partner--studio {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "mark"
+          "body"
+          "cycler";
+        justify-items: start;
+      }
       .studio-cycler { width: 100%; max-width: 340px; }
     }
 
