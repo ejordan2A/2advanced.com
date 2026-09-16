@@ -911,25 +911,24 @@
     .kesey-tout-cta::after { content: none; }
 
     .signal-news {
-      margin: 18px auto 0;
-      border: 1px solid rgba(0, 200, 235, 0.28);
-      background: rgba(0, 0, 0, 0.16);
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.9),
-        0 0 0 2px rgba(255, 255, 255, 0.06),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.045),
-        0 0 34px rgba(0, 140, 200, 0.12);
-      color: rgba(255,255,255,0.56);
+      width: 100%;
+      margin: 28px auto 0;
+      color: rgba(255, 255, 255, 0.82);
     }
 
     .signal-news-label {
-      padding: 10px 14px 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      font-size: 9px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0 0 1rem;
+      margin-bottom: 0.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
       font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(0, 200, 235, 0.48);
+      letter-spacing: -0.01em;
+      text-transform: none;
+      color: rgba(255, 255, 255, 0.95);
     }
 
     .signal-news-list {
@@ -937,38 +936,55 @@
     }
 
     .signal-news-list li {
-      display: flex;
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      gap: 1.25rem;
       align-items: baseline;
-      gap: 12px;
-      padding: 11px 14px 13px;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      line-height: 1.5;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.4;
+      transition: background 0.2s ease;
+    }
+
+    .signal-news-list li:hover {
+      background: rgba(0, 200, 235, 0.04);
     }
 
     .signal-news-date {
-      flex: 0 0 auto;
-      font-size: 9px;
+      font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
+      color: rgba(0, 205, 240, 0.72);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .signal-news-list li > span {
+      color: rgba(255, 255, 255, 0.82);
+      min-width: 0;
+    }
+
+    .signal-news-list li:hover > span {
+      color: #fff;
     }
 
     .signal-news-list a {
-      flex: 0 0 auto;
-      color: rgba(0, 200, 235, 0.68);
+      color: rgba(190, 228, 242, 0.72);
       text-decoration: none;
       text-transform: uppercase;
       font-size: 9px;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
+      white-space: nowrap;
+      align-self: center;
       transition: color 0.25s ease;
     }
 
     .signal-news-list a:hover {
-      color: rgba(255,255,255,0.9);
+      color: rgba(0, 224, 255, 1);
     }
 
     /* About tout: joint studio + founder card, sits above the News module */
@@ -1072,7 +1088,12 @@
       .kesey-touts { grid-template-columns: 1fr; }
       .kesey-tout { grid-template-columns: 1fr; }
       .kesey-tout-media { width: 100%; height: 240px; }
-      .signal-news-list li { flex-direction: column; gap: 5px; }
+      .signal-news-list li {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding: 0.95rem 0;
+      }
+      .signal-news-list a { justify-self: start; }
     }
   </style>
 </head>
