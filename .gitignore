@@ -5,3 +5,6 @@
 
 # Local Netlify folder
 .netlify
+
+# Internal staging (never publish)
+_ej-previews/

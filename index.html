@@ -208,7 +208,7 @@
       will-change: transform;
     }
 
-    /* Curtain-like bands: diagonal linear gradients (teal/blue-green) – more intense */
+    /* Curtain-like bands: diagonal linear gradients (teal/blue-green) - more intense */
     .aurora-layer-1 {
       background: linear-gradient(12deg,
         transparent 0%,
@@ -299,7 +299,7 @@
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.42);
       text-decoration: none;
       transition: color 0.3s ease;
     }
@@ -971,6 +971,102 @@
       color: rgba(255,255,255,0.9);
     }
 
+    /* About tout: joint studio + founder card, sits above the News module */
+    .about-teaser-wrap {
+      width: 100%;
+      max-width: 1040px;
+      margin: 28px auto 0;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-teaser {
+      position: relative;
+      width: 100%;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 1rem 1.35rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.015);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.35s ease, background 0.35s ease;
+    }
+
+    .about-teaser:hover {
+      border-color: rgba(0, 200, 235, 0.22);
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .about-teaser-portrait {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid rgba(0, 150, 195, 0.28);
+      background: #0a1418;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .about-teaser-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .about-teaser-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .about-teaser-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .about-teaser-role {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .about-teaser-cta {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(0, 205, 240, 0.72);
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    .about-teaser-cta::after {
+      content: ' \2192';
+    }
+
+    .about-teaser:hover .about-teaser-cta {
+      color: rgba(0, 224, 255, 1);
+    }
+
+    @media (max-width: 520px) {
+      .about-teaser { flex-wrap: wrap; }
+      .about-teaser-role { white-space: normal; }
+    }
+
     @media (max-width: 680px) {
       .feature-touts { margin: 18px auto 10px; }
       .kesey-touts { grid-template-columns: 1fr; }
@@ -994,6 +1090,7 @@
 
   <p class="meta">2Advanced Studios · Est. 1999 · Pioneering Immersive Digital</p>
   <nav class="top-nav" aria-label="Site navigation">
+    <a href="/about/">About</a>
     <a href="https://return.2advanced.com">Return</a>
     <a href="https://shop.2advanced.com/" target="_blank" rel="noopener noreferrer">The Shop</a>
     <a href="https://www.patreon.com/2Advanced" target="_blank" rel="noopener noreferrer">Patreon</a>
@@ -1024,6 +1121,10 @@
         View Return Transmissions
         <span class="arrow" aria-hidden="true"></span>
       </a>
+      <a href="/about/" class="cta">
+        About 2Advanced Studios
+        <span class="arrow" aria-hidden="true"></span>
+      </a>
     </div>
     <a href="https://www.ericjordan.com/portfolios/2advanced-v3-rive/" target="_blank" rel="noopener noreferrer" class="case-study-link">V3 Expansions Rive Rebuild - Case Study</a>
 
@@ -1036,6 +1137,17 @@
       <p class="mini-signup-msg" id="miniSignupMsg"></p>
     </div>
   </main>
+
+  <div class="about-teaser-wrap">
+    <a class="about-teaser" href="/about/">
+      <span class="about-teaser-portrait"><img src="assets/2advanced-logo.png" alt="2Advanced Studios" width="54" height="54" /></span>
+      <span class="about-teaser-text">
+        <span class="about-teaser-name">2Advanced Studios / Eric Jordan</span>
+        <span class="about-teaser-role">The full story of the studio and its founder... selected work, awards, press, books, and the people behind it.</span>
+      </span>
+      <span class="about-teaser-cta">About</span>
+    </a>
+  </div>
 
   <section class="feature-touts" aria-label="Featured transmissions">
     <div class="signal-news" aria-label="Latest news">
