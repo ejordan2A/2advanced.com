@@ -19,6 +19,13 @@
   status = 200
   force = true
 
+# Never publish local preview drafts
+[[redirects]]
+  from = "/_ej-previews/*"
+  to = "/404"
+  status = 404
+  force = true
+
 # Proxy /V3ExpansionsReboot to the V3 site
 [[redirects]]
   from = "/V3ExpansionsReboot"

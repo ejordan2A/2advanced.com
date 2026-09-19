@@ -118,21 +118,7 @@
   }
   </script>
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5HX7TCR7');</script>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LE6396K28"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2LE6396K28');
-  </script>
+  <script src="/assets/ej-analytics.js"></script>
 
   <link rel="icon" href="/assets/2advanced-logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/2advanced-logo.png" />
@@ -975,7 +961,7 @@
     /* On view / current highlight */
     .info-now {
       display: grid;
-      grid-template-columns: 168px 1fr;
+      grid-template-columns: 118px 1fr;
       gap: 1.75rem;
       align-items: start;
       margin: 0 0 2.25rem;
@@ -984,29 +970,16 @@
       border-radius: 14px;
       background: linear-gradient(90deg, rgba(0, 60, 78, 0.28), rgba(0, 0, 0, 0.14));
     }
-    .info-now-tag {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(0, 224, 255, 0.9);
-      padding-top: 0.2rem;
+    .info-now-media {
+      margin: 0;
     }
-    .info-now-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #00e0ff;
-      box-shadow: 0 0 0 0 rgba(0, 224, 255, 0.6);
-      animation: nowpulse 2.2s ease-out infinite;
+    .info-now-media a {
+      display: block;
     }
-    @keyframes nowpulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 224, 255, 0.55); }
-      70% { box-shadow: 0 0 0 9px rgba(0, 224, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 224, 255, 0); }
+    .info-now-media img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
     .info-now-title {
       font-size: 18px;
@@ -1260,6 +1233,7 @@
 
     @media (max-width: 620px) {
       .info-now { grid-template-columns: 1fr; gap: 0.85rem; }
+      .info-now-media { max-width: 118px; }
       .info-partner { grid-template-columns: 1fr; gap: 1.25rem; }
       .wall-projects { column-count: 1; }
       .wall-rows li a,
@@ -1771,7 +1745,11 @@
         <span class="info-block-count">On view</span>
       </div>
       <section class="info-now" aria-label="On view">
-        <div class="info-now-tag"><span class="info-now-dot" aria-hidden="true"></span>On View · Berlin</div>
+        <figure class="info-now-media">
+          <a href="https://berlin.fotografiska.com/en/exhibitions/lauren-greenfield" target="_blank" rel="noopener noreferrer">
+            <img src="fotografiska-berlin.svg" alt="Fotografiska Berlin" width="270" height="325" />
+          </a>
+        </figure>
         <div class="info-now-body">
           <h2 class="info-now-title">Live Motion Graphics: "Social Studies" at Fotografiska Berlin</h2>
           <p>Eric is directing and designing multiple rooms of projected motion design for Lauren Greenfield's <em>Social Studies</em> exhibition - including an algorithm simulation and a full-scale replica of a teenager's bedroom - drawn from the Emmy-nominated five-part series (FX, Hulu, Disney+) he also created motion graphics for.</p>
@@ -1871,7 +1849,7 @@
         <div class="info-partner-body">
           <div class="info-partner-kicker">Community · Patreon</div>
           <h2 class="info-partner-title">2Advanced on Patreon</h2>
-          <p>Patreon is where the community goes deeper - the support tier that keeps the 2A universe moving. Members get behind-the-scenes process, digital assets and drop kits, and early access to new tools and releases. Top-tier members also receive physical drop-kit shipments... a way to hold a piece of the signal in your hands. However you support, it goes straight back into the work.</p>
+          <p>Patreon is where the community goes deeper - the support tier that keeps the 2A universe moving. Members get behind-the-scenes process, digital assets and drop kits, and early access to new tools and releases. Top-tier members also receive physical drop-kit shipments. However you support, it goes straight back into the work.</p>
           <div class="info-partner-links">
             <a href="https://www.patreon.com/2Advanced" target="_blank" rel="noopener noreferrer">Support on Patreon</a>
           </div>
@@ -2165,15 +2143,15 @@
         <span class="info-block-count">Featured</span>
       </div>
       <ul class="wall-rows">
-        <li><a href="https://www.linkedin.com/pulse/web-design-evolution-digital-world-1990-today-rob-ford-rob-ford/" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Taschen</span><span class="wall-title">Web Design: The Evolution of the Digital World 1990-Today (cover + feature)</span><span class="wall-year">2019</span></a></li>
-        <li><span class="wall-row"><span class="wall-pub">Taschen</span><span class="wall-title">Guidelines for Online Success · "Technology and Programming"</span><span class="wall-year">2008</span></span></li>
-        <li><span class="wall-row"><span class="wall-pub">Friends of ED</span><span class="wall-title">New Masters of Flash</span><span class="wall-year">2003</span></span></li>
-        <li><span class="wall-row"><span class="wall-pub">Friends of ED</span><span class="wall-title">New Masters of Photoshop, Volume 2</span><span class="wall-year">2004</span></span></li>
-        <li><span class="wall-row"><span class="wall-pub">Friends of ED</span><span class="wall-title">New Masters of Photoshop</span><span class="wall-year">2001</span></span></li>
-        <li><span class="wall-row"><span class="wall-pub">Sybex</span><span class="wall-title">Photoshop Secrets of the Pros: 20 Top Artists &amp; Designers Face Off</span><span class="wall-year">2003</span></span></li>
-        <li><span class="wall-row"><span class="wall-pub">New Riders</span><span class="wall-title">Flash MX Magic (3rd Edition)</span><span class="wall-year">2002</span></span></li>
-        <li><span class="wall-row"><span class="wall-pub">Taschen</span><span class="wall-title">The Internet Case Study Book</span><span class="wall-year">2010</span></span></li>
-        <li><span class="wall-row"><span class="wall-pub">Web Design Museum</span><span class="wall-title">The History of Web Design</span><span class="wall-year">Upcoming</span></span></li>
+        <li><a href="https://www.amazon.com/Design-Evolution-Digital-1990-Today-multilingual/dp/3836572672" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Taschen</span><span class="wall-title">Web Design: The Evolution of the Digital World 1990-Today (cover + feature)</span><span class="wall-year">2019</span></a></li>
+        <li><a href="https://www.amazon.com/Internet-Case-Study-Book/dp/3836518953" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Taschen</span><span class="wall-title">The Internet Case Study Book</span><span class="wall-year">2010</span></a></li>
+        <li><a href="https://www.amazon.com/Guidelines-Online-Success-Julius-Wiedemann/dp/3836528126" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Taschen</span><span class="wall-title">Guidelines for Online Success · "Technology and Programming"</span><span class="wall-year">2008</span></a></li>
+        <li><a href="https://www.amazon.com/New-Masters-Photoshop-Vol-2/dp/1590593154" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Friends of ED</span><span class="wall-title">New Masters of Photoshop, Volume 2</span><span class="wall-year">2004</span></a></li>
+        <li><a href="https://www.amazon.com/Masters-Flash-CD-ROM-Joshua-Davis/dp/1903450039" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Friends of ED</span><span class="wall-title">New Masters of Flash</span><span class="wall-year">2003</span></a></li>
+        <li><a href="https://www.amazon.com/dp/0782141919" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Sybex</span><span class="wall-title">Photoshop Secrets of the Pros: 20 Top Artists &amp; Designers Face Off</span><span class="wall-year">2003</span></a></li>
+        <li><a href="https://www.peachpit.com/store/flash-mx-magic-9780735711600" target="_blank" rel="noopener noreferrer"><span class="wall-pub">New Riders</span><span class="wall-title">Flash MX Magic (3rd Edition)</span><span class="wall-year">2002</span></a></li>
+        <li><a href="https://www.amazon.com/New-Masters-Photoshop-Friends-Designer/dp/1903450624" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Friends of ED</span><span class="wall-title">New Masters of Photoshop</span><span class="wall-year">2001</span></a></li>
+        <li><a href="https://www.webdesignmuseum.org/exhibitions/2advanced-studios" target="_blank" rel="noopener noreferrer"><span class="wall-pub">Web Design Museum</span><span class="wall-title">The History of Web Design</span><span class="wall-year">Upcoming</span></a></li>
       </ul>
     </section>
 

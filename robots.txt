@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_ej-previews/
 
 Sitemap: https://2advanced.com/sitemap.xml
