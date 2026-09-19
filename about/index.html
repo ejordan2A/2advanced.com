@@ -1109,7 +1109,24 @@
     .info-partner--studio > .studio-cycler { grid-area: cycler; }
     .info-partner--studio .info-partner-kicker { color: rgba(255, 255, 255, 0.7); }
     .info-partner--studio .info-partner-mark img { width: 54px; height: 54px; }
-    .info-partner--studio .info-partner-body p { margin-bottom: 0; }
+    .info-partner--studio .info-partner-body p { margin-bottom: 1.05rem; }
+    .studio-contact {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #001015;
+      background: rgba(0, 214, 250, 0.92);
+      text-decoration: none;
+      padding: 0.7rem 1.25rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .studio-contact:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
 
     /* Studio version image cycler (right column of the lead-in card) */
     .studio-cycler {
@@ -1638,6 +1655,7 @@
         <div class="info-partner-kicker">The Studio</div>
         <h2 class="info-partner-title">2Advanced Studios</h2>
         <p>2Advanced Studios came up at the rise of Flash and helped shape the visual language of the early interactive web. What started as a four-person studio grew into a 35-person team, building immersive Flash experiences for top clients around the world - a run that earned a place in the FWA Hall of Fame. Today it's back in its original form as a world-building brand and experimental design platform.</p>
+        <a class="studio-contact" href="mailto:info@2advanced.com?subject=Inquiry">Contact</a>
       </div>
       <div class="studio-cycler" aria-label="2Advanced site versions">
         <div class="studio-cycler-frame">

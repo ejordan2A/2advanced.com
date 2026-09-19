@@ -1073,9 +1073,21 @@
       color: rgba(0, 224, 255, 1);
     }
 
-    @media (max-width: 520px) {
-      .about-teaser { flex-wrap: wrap; }
+    @media (max-width: 640px) {
+      .about-teaser {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas:
+          "portrait text"
+          ". cta";
+        align-items: start;
+        gap: 0.55rem 1rem;
+      }
+      .about-teaser-portrait { grid-area: portrait; align-self: center; }
+      .about-teaser-text { grid-area: text; flex: none; min-width: 0; }
+      .about-teaser-name,
       .about-teaser-role { white-space: normal; }
+      .about-teaser-cta { grid-area: cta; justify-self: start; }
     }
 
     @media (max-width: 680px) {
