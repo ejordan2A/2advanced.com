@@ -534,10 +534,105 @@
       color: rgba(255, 255, 255, 0.35);
     }
 
+    .turn {
+      display: none;
+    }
+
     @media (max-width: 860px) {
-      .mast { padding: 28px 18px 4px; }
-      .mast h1 { font-size: 13px; letter-spacing: 0.9em; margin-right: -0.9em; }
-      main { padding: 18px 18px 28px; align-items: flex-start; }
+      html, body { overflow-x: hidden; }
+      .mast { padding: 28px 16px 4px; }
+      .archive-line {
+        max-width: 22rem;
+        margin-right: 0;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        line-height: 1.45;
+      }
+      .mast h1 {
+        font-size: 13px;
+        letter-spacing: 0.55em;
+        margin-right: -0.55em;
+      }
+      main { padding: 18px 16px 12px; align-items: flex-start; }
+      .grid { gap: 28px; }
+      .launch-mark {
+        min-height: 44px;
+        padding: 12px 16px 12px 14px;
+        letter-spacing: 0.2em;
+      }
+      footer { width: min(720px, calc(100% - 32px)); }
+      .visit { letter-spacing: 0.14em; }
+
+      .lightbox {
+        padding: 0;
+        align-items: stretch;
+        overscroll-behavior: none;
+      }
+
+      .lightbox-frame {
+        width: 100%;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding:
+          max(12px, env(safe-area-inset-top))
+          max(14px, env(safe-area-inset-right))
+          max(14px, env(safe-area-inset-bottom))
+          max(14px, env(safe-area-inset-left));
+      }
+
+      .close {
+        position: static;
+        align-self: flex-end;
+        flex: 0 0 auto;
+        min-height: 44px;
+        margin: 0 0 10px;
+        padding: 8px 2px;
+      }
+
+      .lightbox-stage {
+        width: min(100%, calc((100dvh - 120px) * 780 / 388));
+        max-height: calc(100dvh - 120px);
+        margin-inline: auto;
+        touch-action: none;
+      }
+
+      .lightbox-stage ruffle-player {
+        touch-action: none;
+      }
+    }
+
+    @media (max-width: 860px) and (orientation: portrait) {
+      .turn {
+        display: block;
+        margin-top: 14px;
+        text-align: center;
+        font-family: "Eurostile LT Std", Eurostile, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+      }
+    }
+
+    @media (max-width: 860px) and (orientation: landscape) {
+      .lightbox-frame {
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .close {
+        margin: 0;
+        align-self: flex-start;
+      }
+
+      .lightbox-stage {
+        width: min(calc(100% - 88px), calc((100dvh - 28px) * 780 / 388));
+        max-height: calc(100dvh - 28px);
+      }
     }
   </style>
 </head>
@@ -632,6 +727,7 @@
           <p>Loading</p>
         </div>
       </div>
+      <p class="turn">Turn sideways for a larger view</p>
     </div>
   </div>
 
@@ -681,6 +777,7 @@
       lightbox.classList.remove("is-open");
       lightbox.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if (lastTrigger) lastTrigger.focus();
     }
 
@@ -709,6 +806,7 @@
       lightbox.classList.add("is-open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       closeBtn.focus();
     }
 
