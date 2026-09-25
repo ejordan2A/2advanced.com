@@ -534,9 +534,25 @@
       color: rgba(255, 255, 255, 0.35);
     }
 
-    .turn,
-    .press-hint {
+    .center-hit {
       display: none;
+    }
+
+    html.touch-play .center-hit {
+      display: block;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 50%;
+      width: 36%;
+      height: 48%;
+      min-width: 72px;
+      min-height: 72px;
+      transform: translate(-50%, -50%);
+      border: 0;
+      padding: 0;
+      background: transparent;
+      touch-action: manipulation;
     }
 
     @media (max-width: 860px) {
@@ -593,8 +609,8 @@
       }
 
       .lightbox-stage {
-        width: min(100%, calc((100dvh - 120px) * 780 / 388));
-        max-height: calc(100dvh - 120px);
+        width: min(100%, calc((100dvh - 76px) * 780 / 388));
+        max-height: calc(100dvh - 76px);
         margin-inline: auto;
         touch-action: none;
       }
@@ -602,24 +618,6 @@
       .lightbox-stage ruffle-player {
         touch-action: none;
       }
-    }
-
-    @media (max-width: 860px) and (orientation: portrait) {
-      .turn,
-      .press-hint {
-        display: block;
-        margin-top: 14px;
-        text-align: center;
-        font-family: "Eurostile LT Std", Eurostile, sans-serif;
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.55);
-      }
-
-      .press-hint { margin-top: 16px; }
-      .turn { margin-top: 8px; }
     }
 
     @media (max-width: 860px) and (orientation: landscape) {
@@ -731,13 +729,16 @@
           <div class="stage-loader-mark" aria-hidden="true"><img src="n-mark.png" alt="" /><span></span></div>
           <p>Loading</p>
         </div>
+        <button class="center-hit" id="center-hit" type="button" aria-label="Play"></button>
       </div>
-      <p class="press-hint">Press and drag</p>
-      <p class="turn">Turn sideways for a larger view</p>
     </div>
   </div>
 
   <script>
+    var touchPlay = window.matchMedia("(hover: none), (pointer: coarse)").matches
+      || (navigator.maxTouchPoints > 1 && window.matchMedia("(max-width: 1400px)").matches);
+    if (touchPlay) document.documentElement.classList.add("touch-play");
+
     var lightbox = document.getElementById("lightbox");
     var stage = document.getElementById("lightbox-stage");
     var titleEl = document.getElementById("lightbox-title");
@@ -787,54 +788,30 @@
       if (lastTrigger) lastTrigger.focus();
     }
 
-    function armTouchHover(player) {
-      if (!window.matchMedia("(pointer: coarse)").matches) return;
-      var tries = 0;
+    function hoverAt(canvas, clientX, clientY) {
+      var sim = new PointerEvent("pointermove", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        pointerId: 1,
+        pointerType: "mouse",
+        clientX: clientX,
+        clientY: clientY,
+        button: -1,
+        buttons: 0,
+        isPrimary: true,
+        view: window
+      });
+      sim._hoverSim = true;
+      canvas.dispatchEvent(sim);
+    }
 
-      function hoverAt(canvas, e) {
-        var sim = new PointerEvent("pointermove", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          pointerId: 1,
-          pointerType: "mouse",
-          clientX: e.clientX,
-          clientY: e.clientY,
-          screenX: e.screenX,
-          screenY: e.screenY,
-          button: -1,
-          buttons: 0,
-          isPrimary: true,
-          view: window
-        });
-        sim._hoverSim = true;
-        canvas.dispatchEvent(sim);
-      }
-
-      function attach() {
-        var canvas = player.shadowRoot && player.shadowRoot.querySelector("canvas");
-        if (!canvas) {
-          if (tries++ < 40) setTimeout(attach, 100);
-          return;
-        }
-        if (canvas.dataset.touchHover) return;
-        canvas.dataset.touchHover = "1";
-        canvas.style.touchAction = "none";
-
-        ["pointerdown", "pointermove", "pointerup"].forEach(function (type) {
-          canvas.addEventListener(type, function (e) {
-            if (e._hoverSim || e.pointerType !== "touch") return;
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            if (type === "pointerdown") {
-              try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
-            }
-            hoverAt(canvas, e);
-          }, { capture: true, passive: false });
-        });
-      }
-
-      attach();
+    function playFromCenter(player) {
+      var canvas = player && player.shadowRoot && player.shadowRoot.querySelector("canvas");
+      if (!canvas) return;
+      var rect = canvas.getBoundingClientRect();
+      hoverAt(canvas, rect.left + 2, rect.top + 2);
+      hoverAt(canvas, rect.left + rect.width / 2, rect.top + rect.height / 2);
     }
 
     function openLightbox(thumb, trigger) {
@@ -846,7 +823,6 @@
       player.style.height = "100%";
       stage.appendChild(player);
       activePlayer = player;
-      armTouchHover(player);
       showLoader();
       var shownAt = Date.now();
       var revealed = false;
@@ -871,6 +847,12 @@
       thumb.querySelector(".launch").addEventListener("click", function () {
         openLightbox(thumb, this);
       });
+    });
+
+    document.getElementById("center-hit").addEventListener("pointerdown", function (event) {
+      if (!activePlayer) return;
+      event.preventDefault();
+      playFromCenter(activePlayer);
     });
 
     closeBtn.addEventListener("click", closeLightbox);
