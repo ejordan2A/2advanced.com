@@ -365,6 +365,64 @@
       --preloader-background: #acb6b7;
     }
 
+    .stage-loader {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #acb6b7;
+    }
+
+    .stage-loader[hidden] { display: none; }
+
+    .stage-loader-mark {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(18, 28, 32, 0.7);
+      overflow: hidden;
+    }
+
+    .stage-loader-mark img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 20px;
+      height: auto;
+      transform: translate(-50%, -50%);
+      filter: brightness(0);
+      opacity: 0.82;
+    }
+
+    .stage-loader-mark span {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #122028;
+      animation: stage-scan 1.05s ease-in-out infinite;
+    }
+
+    @keyframes stage-scan {
+      0% { top: -2px; }
+      100% { top: 34px; }
+    }
+
+    .stage-loader p {
+      margin-right: -0.34em;
+      font-family: "Eurostile LT Std", Eurostile, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(18, 28, 32, 0.72);
+    }
+
     .close {
       position: absolute;
       top: -42px;
@@ -549,7 +607,12 @@
     <div class="lightbox-frame" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
       <button class="close" type="button" id="lightbox-close"><span class="close-x" aria-hidden="true">X</span>Close</button>
       <h2 id="lightbox-title" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Sequence</h2>
-      <div class="lightbox-stage" id="lightbox-stage"></div>
+      <div class="lightbox-stage" id="lightbox-stage">
+        <div class="stage-loader" id="stage-loader" hidden>
+          <div class="stage-loader-mark" aria-hidden="true"><img src="n-mark.png" alt="" /><span></span></div>
+          <p>Loading</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -560,6 +623,20 @@
     var closeBtn = document.getElementById("lightbox-close");
     var activePlayer = null;
     var lastTrigger = null;
+    var loader = document.getElementById("stage-loader");
+    var loaderTimer = null;
+
+    function showLoader() {
+      if (loaderTimer) {
+        clearTimeout(loaderTimer);
+        loaderTimer = null;
+      }
+      loader.hidden = false;
+    }
+
+    function hideLoader() {
+      loader.hidden = true;
+    }
 
     function engine(player) {
       return player && player.ruffle ? player.ruffle() : null;
@@ -572,6 +649,11 @@
     }
 
     function closeLightbox() {
+      if (loaderTimer) {
+        clearTimeout(loaderTimer);
+        loaderTimer = null;
+      }
+      hideLoader();
       if (activePlayer) {
         hold(activePlayer);
         if (activePlayer.parentNode) activePlayer.parentNode.removeChild(activePlayer);
@@ -592,6 +674,18 @@
       player.style.height = "100%";
       stage.appendChild(player);
       activePlayer = player;
+      showLoader();
+      var shownAt = Date.now();
+      var revealed = false;
+      function reveal() {
+        if (revealed || activePlayer !== player) return;
+        revealed = true;
+        var wait = Math.max(0, 650 - (Date.now() - shownAt));
+        loaderTimer = setTimeout(hideLoader, wait);
+      }
+      player.addEventListener("loadeddata", reveal);
+      player.addEventListener("loadedmetadata", reveal);
+      setTimeout(reveal, 20000);
       player.ruffle().load(thumb.dataset.swf);
       lightbox.classList.add("is-open");
       lightbox.setAttribute("aria-hidden", "false");
