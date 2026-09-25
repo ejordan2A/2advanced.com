@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sequence | 2Advanced Studios</title>
+  <meta name="description" content="Sequence. Three experimental Flash pieces from 2Advanced Studios." />
+  <link rel="icon" href="../assets/2advanced-logo.png" type="image/png" />
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+      autoplay: "on",
+      backgroundColor: "#acb6b7",
+      contextMenu: "off",
+      letterbox: "off",
+      logLevel: "error",
+      showSwfDownload: false,
+      splashScreen: false,
+      preloader: false,
+      unmuteOverlay: "hidden",
+      warnOnUnsupportedContent: false
+    };
+  </script>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <style>
+    @font-face {
+      font-family: "Eurostile LT Std";
+      src: url("fonts/EurostileLTStd.otf") format("opentype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Eurostile LT Std";
+      src: url("fonts/EurostileLTStd-Bold.otf") format("opentype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      background: #0a0a0b;
+    }
+
+    body {
+      min-height: 100vh;
+      color: rgba(255, 255, 255, 0.92);
+      font-family: "Eurostile LT Std", Eurostile, "Michroma", sans-serif;
+      background: #0a0a0b;
+    }
+
+    .dot-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.32) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .aurora-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 85vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .fade-to-black {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0)    0%,
+        rgba(0, 0, 0, 0)    22%,
+        rgba(0, 0, 0, 0.05) 30%,
+        rgba(0, 0, 0, 0.13) 36%,
+        rgba(0, 0, 0, 0.26) 42%,
+        rgba(0, 0, 0, 0.44) 48%,
+        rgba(0, 0, 0, 0.63) 54%,
+        rgba(0, 0, 0, 0.80) 59%,
+        rgba(0, 0, 0, 0.93) 64%,
+        #000               68%,
+        #000               100%);
+    }
+
+    .aurora-layer {
+      position: absolute;
+      left: -50%;
+      top: -50%;
+      width: 200%;
+      height: 200%;
+      will-change: transform;
+    }
+
+    .aurora-layer-1 {
+      background: linear-gradient(12deg,
+        transparent 0%,
+        rgba(0, 80, 110, 0.1) 12%,
+        rgba(0, 100, 140, 0.24) 28%,
+        rgba(0, 85, 120, 0.14) 42%,
+        transparent 55%,
+        rgba(0, 75, 105, 0.1) 68%,
+        rgba(0, 95, 130, 0.2) 82%,
+        transparent 95%);
+      animation: aurora-sway-1 10s ease-in-out infinite alternate;
+    }
+
+    .aurora-layer-2 {
+      background: linear-gradient(-8deg,
+        transparent 5%,
+        rgba(0, 85, 120, 0.14) 25%,
+        rgba(0, 110, 145, 0.24) 45%,
+        rgba(0, 75, 100, 0.1) 65%,
+        transparent 85%);
+      animation: aurora-sway-2 13s ease-in-out infinite alternate;
+    }
+
+    .aurora-layer-3 {
+      background: linear-gradient(175deg,
+        transparent 10%,
+        rgba(0, 80, 110, 0.12) 35%,
+        rgba(0, 100, 135, 0.2) 55%,
+        transparent 75%);
+      animation: aurora-sway-3 11s ease-in-out infinite alternate;
+    }
+
+    @keyframes aurora-sway-1 {
+      0%   { transform: translate(0, 0) rotate(8deg); }
+      25%  { transform: translate(8%, 5%) rotate(-8deg); }
+      50%  { transform: translate(-5%, 9%) rotate(5deg); }
+      75%  { transform: translate(6%, -4%) rotate(-12deg); }
+      100% { transform: translate(-3%, 4%) rotate(8deg); }
+    }
+
+    @keyframes aurora-sway-2 {
+      0%   { transform: translate(0, 0) rotate(-6deg); }
+      33%  { transform: translate(-10%, 8%) rotate(12deg); }
+      66%  { transform: translate(7%, -6%) rotate(-10deg); }
+      100% { transform: translate(8%, 5%) rotate(-6deg); }
+    }
+
+    @keyframes aurora-sway-3 {
+      0%   { transform: translate(5%, -3%) rotate(10deg); }
+      50%  { transform: translate(-8%, 6%) rotate(-14deg); }
+      100% { transform: translate(4%, 4%) rotate(10deg); }
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mast {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      padding: 40px 24px 4px;
+    }
+
+    .lockup-link {
+      display: block;
+      line-height: 0;
+    }
+
+    .lockup-link:focus-visible {
+      outline: 1px solid rgba(140, 210, 230, 0.9);
+      outline-offset: 4px;
+    }
+
+    .lockup {
+      display: block;
+      width: min(168px, 31vw);
+      height: auto;
+    }
+
+    .mast h1 {
+      margin-top: 18px;
+      margin-right: -1.15em;
+      font-family: "Eurostile LT Std", Eurostile, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 1.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1;
+    }
+
+    .n-box {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin-top: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+    }
+
+    .n-mark {
+      display: block;
+      width: 22px;
+      height: auto;
+    }
+
+    .archive-line {
+      margin-top: 10px;
+      margin-right: -0.16em;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.46);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 36px 56px;
+    }
+
+    .grid {
+      width: min(720px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .piece {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .thumb {
+      position: relative;
+      aspect-ratio: 780 / 388;
+      background: #acb6b7;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .thumb .poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .launch {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      border: 0;
+      cursor: pointer;
+      background: linear-gradient(to bottom, rgba(5, 8, 12, 0.08), rgba(5, 8, 12, 0.38));
+      color: #fff;
+    }
+
+    .launch:focus-visible {
+      outline: 1px solid rgba(140, 210, 230, 0.9);
+      outline-offset: -3px;
+    }
+
+    .launch-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px 11px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: rgba(6, 10, 14, 0.58);
+      backdrop-filter: blur(6px);
+      font-family: "Eurostile LT Std", Eurostile, sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .launch:hover .launch-mark {
+      transform: scale(1.04);
+      background: rgba(6, 10, 14, 0.78);
+    }
+
+    .launch-mark svg {
+      width: 11px;
+      height: 11px;
+      margin-left: 1px;
+      fill: #fff;
+    }
+
+    .piece-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .piece-title,
+    .piece-index {
+      font-family: "Eurostile LT Std", Eurostile, sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .piece-title { color: rgba(255, 255, 255, 0.88); }
+    .piece-index { color: rgba(255, 255, 255, 0.42); }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 28px 36px;
+      background: rgba(0, 0, 0, 0.84);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .lightbox.is-open { display: flex; }
+
+    .lightbox-frame {
+      position: relative;
+      width: min(1440px, calc(100vw - 56px), calc((100vh - 96px) * 780 / 388));
+    }
+
+    .lightbox-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 780 / 388;
+      background: #acb6b7;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    }
+
+    .lightbox-stage ruffle-player {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      --logo-display: none;
+      --preloader-background: #acb6b7;
+    }
+
+    .close {
+      position: absolute;
+      top: -42px;
+      right: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.82);
+      font-family: "Eurostile LT Std", Eurostile, sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .close-x {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    .close:hover { color: #fff; }
+
+    .close:hover .close-x { border-color: #fff; }
+
+    .close:focus-visible {
+      outline: 1px solid rgba(140, 210, 230, 0.9);
+      outline-offset: 3px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      width: min(720px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 2.5rem 0 2.25rem;
+      text-align: center;
+    }
+
+    .visit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px 5px 11px;
+      border: 1px solid #00a8c8;
+      background: #00a8c8;
+      color: #04181e;
+      text-decoration: none;
+      font-family: "Eurostile LT Std", Eurostile, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .visit:hover {
+      background: #00c0e0;
+      border-color: #00c0e0;
+    }
+
+    .visit:focus-visible {
+      outline: 1px solid rgba(140, 210, 230, 0.9);
+      outline-offset: 3px;
+    }
+
+    .visit-arrow {
+      width: 6px;
+      height: 6px;
+      margin-left: -2px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(-45deg);
+    }
+
+    .footer-copy {
+      margin-top: 1.15rem;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    @media (max-width: 860px) {
+      .mast { padding: 28px 18px 4px; }
+      .mast h1 { font-size: 13px; letter-spacing: 0.9em; margin-right: -0.9em; }
+      main { padding: 18px 18px 28px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dot-grid" aria-hidden="true"></div>
+  <div class="aurora-wrap" aria-hidden="true">
+    <div class="aurora-layer aurora-layer-1"></div>
+    <div class="aurora-layer aurora-layer-2"></div>
+    <div class="aurora-layer aurora-layer-3"></div>
+  </div>
+  <div class="fade-to-black" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="mast">
+      <a class="lockup-link" href="https://2advanced.com/" target="_blank" rel="noopener noreferrer">
+        <img class="lockup" src="2advanced-studios-stacked.svg" alt="2Advanced Studios" />
+      </a>
+      <h1>Sequence</h1>
+      <span class="n-box"><img class="n-mark" src="n-mark.png" alt="" /></span>
+      <p class="archive-line">Experimental Archive: &ldquo;Sequence&rdquo; - 2001</p>
+    </header>
+
+    <main>
+      <div class="grid">
+        <article class="piece">
+          <div class="thumb" data-swf="swf/quotient.swf" data-title="Quotient">
+            <img class="poster" src="posters/quotient.png" alt="" />
+            <button class="launch" type="button">
+              <span class="launch-mark">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+                Launch
+              </span>
+            </button>
+          </div>
+          <div class="piece-meta">
+            <h2 class="piece-title">Quotient</h2>
+            <span class="piece-index">01</span>
+          </div>
+        </article>
+
+        <article class="piece">
+          <div class="thumb" data-swf="swf/maneuvers.swf" data-title="Maneuvers">
+            <img class="poster" src="posters/maneuvers.png" alt="" />
+            <button class="launch" type="button">
+              <span class="launch-mark">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+                Launch
+              </span>
+            </button>
+          </div>
+          <div class="piece-meta">
+            <h2 class="piece-title">Maneuvers</h2>
+            <span class="piece-index">02</span>
+          </div>
+        </article>
+
+        <article class="piece">
+          <div class="thumb" data-swf="swf/integrator.swf" data-title="Integrator">
+            <img class="poster" src="posters/integrator.png" alt="" />
+            <button class="launch" type="button">
+              <span class="launch-mark">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+                Launch
+              </span>
+            </button>
+          </div>
+          <div class="piece-meta">
+            <h2 class="piece-title">Integrator</h2>
+            <span class="piece-index">03</span>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <a class="visit" href="https://2advanced.com/">
+        <span>Visit</span>
+        <span>2Advanced.com</span>
+        <span class="visit-arrow" aria-hidden="true"></span>
+      </a>
+      <p class="footer-copy">&copy; 2026 2Advanced Studios. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-frame" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+      <button class="close" type="button" id="lightbox-close"><span class="close-x" aria-hidden="true">X</span>Close</button>
+      <h2 id="lightbox-title" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Sequence</h2>
+      <div class="lightbox-stage" id="lightbox-stage"></div>
+    </div>
+  </div>
+
+  <script>
+    var lightbox = document.getElementById("lightbox");
+    var stage = document.getElementById("lightbox-stage");
+    var titleEl = document.getElementById("lightbox-title");
+    var closeBtn = document.getElementById("lightbox-close");
+    var activePlayer = null;
+    var lastTrigger = null;
+
+    function engine(player) {
+      return player && player.ruffle ? player.ruffle() : null;
+    }
+
+    function hold(player) {
+      var api = engine(player);
+      if (!api) return;
+      try { api.pause(); } catch (e) {}
+    }
+
+    function closeLightbox() {
+      if (activePlayer) {
+        hold(activePlayer);
+        if (activePlayer.parentNode) activePlayer.parentNode.removeChild(activePlayer);
+        activePlayer = null;
+      }
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastTrigger) lastTrigger.focus();
+    }
+
+    function openLightbox(thumb, trigger) {
+      closeLightbox();
+      lastTrigger = trigger;
+      titleEl.textContent = thumb.dataset.title || "Sequence";
+      var player = window.RufflePlayer.newest().createPlayer();
+      player.style.width = "100%";
+      player.style.height = "100%";
+      stage.appendChild(player);
+      activePlayer = player;
+      player.ruffle().load(thumb.dataset.swf);
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    document.querySelectorAll(".thumb").forEach(function (thumb) {
+      thumb.querySelector(".launch").addEventListener("click", function () {
+        openLightbox(thumb, this);
+      });
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    });
+  </script>
+</body>
+</html>
