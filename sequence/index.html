@@ -534,7 +534,8 @@
       color: rgba(255, 255, 255, 0.35);
     }
 
-    .turn {
+    .turn,
+    .press-hint {
       display: none;
     }
 
@@ -604,7 +605,8 @@
     }
 
     @media (max-width: 860px) and (orientation: portrait) {
-      .turn {
+      .turn,
+      .press-hint {
         display: block;
         margin-top: 14px;
         text-align: center;
@@ -615,6 +617,9 @@
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.55);
       }
+
+      .press-hint { margin-top: 16px; }
+      .turn { margin-top: 8px; }
     }
 
     @media (max-width: 860px) and (orientation: landscape) {
@@ -727,6 +732,7 @@
           <p>Loading</p>
         </div>
       </div>
+      <p class="press-hint">Press and drag</p>
       <p class="turn">Turn sideways for a larger view</p>
     </div>
   </div>
@@ -781,6 +787,56 @@
       if (lastTrigger) lastTrigger.focus();
     }
 
+    function armTouchHover(player) {
+      if (!window.matchMedia("(pointer: coarse)").matches) return;
+      var tries = 0;
+
+      function hoverAt(canvas, e) {
+        var sim = new PointerEvent("pointermove", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          pointerId: 1,
+          pointerType: "mouse",
+          clientX: e.clientX,
+          clientY: e.clientY,
+          screenX: e.screenX,
+          screenY: e.screenY,
+          button: -1,
+          buttons: 0,
+          isPrimary: true,
+          view: window
+        });
+        sim._hoverSim = true;
+        canvas.dispatchEvent(sim);
+      }
+
+      function attach() {
+        var canvas = player.shadowRoot && player.shadowRoot.querySelector("canvas");
+        if (!canvas) {
+          if (tries++ < 40) setTimeout(attach, 100);
+          return;
+        }
+        if (canvas.dataset.touchHover) return;
+        canvas.dataset.touchHover = "1";
+        canvas.style.touchAction = "none";
+
+        ["pointerdown", "pointermove", "pointerup"].forEach(function (type) {
+          canvas.addEventListener(type, function (e) {
+            if (e._hoverSim || e.pointerType !== "touch") return;
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            if (type === "pointerdown") {
+              try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
+            }
+            hoverAt(canvas, e);
+          }, { capture: true, passive: false });
+        });
+      }
+
+      attach();
+    }
+
     function openLightbox(thumb, trigger) {
       closeLightbox();
       lastTrigger = trigger;
@@ -790,6 +846,7 @@
       player.style.height = "100%";
       stage.appendChild(player);
       activePlayer = player;
+      armTouchHover(player);
       showLoader();
       var shownAt = Date.now();
       var revealed = false;
